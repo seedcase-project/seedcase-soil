@@ -142,7 +142,7 @@ def build(
         verbose: If True, print more details.
         output_dir: The output directory.
     """
-    pass
+    source, verbose, output_dir  # Avoid unused variables
 
 
 _EXPECTED_HELP = dedent(

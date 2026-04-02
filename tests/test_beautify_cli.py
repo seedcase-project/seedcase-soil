@@ -3,15 +3,20 @@
 from textwrap import dedent
 
 import pytest
-from cyclopts import App, Parameter
+from cyclopts import App
 from cyclopts.help import HelpEntry
 from rich.console import Console
 
 from seedcase_soil.beautify_cli import (
     _add_highlight_syntax,
     _format_param_help,
+    pretty_print,
+    print_if_verbose,
+    run_without_tracebacks,
     setup_cli,
 )
+
+# Unit tests ====
 
 
 def test_add_highlight_syntax_adds_bold_blue_to_flags():
@@ -37,17 +42,62 @@ def test_add_highlight_syntax_omits_placeholder_for_bool():
 
 def test_format_param_help_puts_flags_first():
     """Parameter help should show flags before positional args."""
+    # HelpEntry uses positive_names/positive_shorts for flags
+    # names is a computed property from positive_names
     entry = HelpEntry(
-        names=["SOURCE", "--source"],
+        positive_names=("--source", "-s"),
         type=str,
         description="The source file",
     )
     result = _format_param_help(entry)
-    # Flags should come first, then positional
+    # Both flags get bold blue markup, sorted alphabetically
     assert "[bold blue]--source[/bold blue]" in result
-    assert "[dim]<SOURCE>[/dim]" in result
-    # Check order: flag comes before placeholder
-    assert result.index("[bold blue]") < result.index("[dim]")
+    assert "[bold blue]-s[/bold blue]" in result
+    # When sorted, '--' comes before '-' so --source is first
+    assert result == "[bold blue]--source[/bold blue] [bold blue]-s[/bold blue]"
+
+
+def test_pretty_print(capsys):
+    """pretty_print should print the message."""
+
+    pretty_print("test message")
+    assert "test message" in capsys.readouterr().out
+
+
+def test_print_if_verbose_when_verbose(capsys):
+    """print_if_verbose should print when verbose is True."""
+
+    print_if_verbose(True, "verbose message")
+    assert "verbose message" in capsys.readouterr().out
+
+
+def test_print_if_verbose_when_not_verbose(capsys):
+    """print_if_verbose should not print when verbose is False."""
+
+    print_if_verbose(False, "verbose message")
+    assert capsys.readouterr().out == ""
+
+
+def test_run_without_tracebacks_on_error(capsys):
+    """run_without_tracebacks should print error panel and exit on exception."""
+
+    def failing_app():
+        raise ValueError("test error")
+
+    with pytest.raises(SystemExit) as exc_info:
+        run_without_tracebacks(failing_app)
+
+    assert exc_info.value.code == 1
+    captured = capsys.readouterr()
+    err = captured.err
+    assert "ValueError" in err
+    assert "test error" in err
+    # Should not print a traceback
+    assert "Traceback" not in captured.out
+    assert "Traceback" not in captured.err
+
+
+# Integration tests ====
 
 
 # Create a minimal test CLI to test the overall help formatting
@@ -132,6 +182,9 @@ def test_command_help_page(capsys, console):
     assert capsys.readouterr().out == _EXPECTED_BUILD_HELP
 
 
+# It was not possible to include these color markup tags directly in the help string
+# test above because printing them out explicitly in the rich console messes up the
+# column widths in cyclopts
 def test_help_applies_rich_markup(capsys):
     """Help output should contain the markup tags (not rendered)."""
     markup_console = Console(

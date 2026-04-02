@@ -18,6 +18,7 @@ license-files = ["LICENSE.md"]
 requires-python = ">=3.12"
 dependencies = [
     "cyclopts>=4.10.1",
+    "rich>=14.3.3",
 ]
 
 [project.urls]

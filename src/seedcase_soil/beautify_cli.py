@@ -18,20 +18,14 @@ box.SIMPLE = box.HEAVY_HEAD
 
 CONSOLE_THEME = Theme(
     {
-        "markdown.h1": "bold yellow",
-        "markdown.h2": "bold yellow",
-        "markdown.h3": "italic yellow",
-        "markdown.code": "blue",
+        "markdown.h1": "bold blue",
+        "markdown.h2": "bold blue",
+        "markdown.h3": "blue",
+        "markdown.code": "yellow",
         "markdown.link": "underline cyan",
         "markdown.link_url": "underline cyan",
-        "markdown.table.header": "yellow",
+        "markdown.table.header": "blue",
         "markdown.table.border": "white",
-    }
-)
-
-HELP_CONSOLE_THEME = Theme(
-    {
-        "markdown.code": "yellow not reverse",
     }
 )
 
@@ -48,7 +42,7 @@ def setup_cli(name: str, help: str, config_name: str) -> App:
             )
         ),
         default_parameter=Parameter(negative=(), show_default=True),
-        console=Console(theme=HELP_CONSOLE_THEME),
+        console=Console(theme=CONSOLE_THEME),
         config=[
             config.Toml(
                 config_name,

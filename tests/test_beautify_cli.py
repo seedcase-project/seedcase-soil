@@ -1,13 +1,15 @@
 """Tests for the CLI beautification utilities."""
 
+from io import StringIO
 from textwrap import dedent
 
 import pytest
-from cyclopts import App
 from cyclopts.help import HelpEntry
 from rich.console import Console
+from rich.markdown import Markdown
 
 from seedcase_soil.beautify_cli import (
+    CONSOLE_THEME,
     _add_highlight_syntax,
     _format_param_help,
     pretty_print,
@@ -95,6 +97,19 @@ def test_run_without_tracebacks_on_error(capsys):
     # Should not print a traceback
     assert "Traceback" not in captured.out
     assert "Traceback" not in captured.err
+
+
+def test_styled_markdown_table_renders_box_and_header():
+    """Markdown tables should render with a heavy-head box and column separators."""
+    md = "| A | B |\n|---|---|\n| 1 | 2 |\n"
+    out = StringIO()
+    Console(file=out, theme=CONSOLE_THEME, no_color=True).print(Markdown(md))
+    output = out.getvalue()
+    assert "┏" in output  # heavy outer box top
+    assert "┡" in output  # heavy-to-light header separator
+    assert "┴" in output  # bottom border with column joins
+    assert "A" in output
+    assert "B" in output
 
 
 # Integration tests ====

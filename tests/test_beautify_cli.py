@@ -4,6 +4,7 @@ from io import StringIO
 from textwrap import dedent
 
 import pytest
+from cyclopts import App
 from cyclopts.help import HelpEntry
 from rich.console import Console
 from rich.markdown import Markdown
@@ -82,12 +83,17 @@ def test_print_if_verbose_when_not_verbose(capsys):
 
 def test_run_without_tracebacks_on_error(capsys):
     """run_without_tracebacks should print error panel and exit on exception."""
+    import sys
 
+    app = App()
+
+    @app.command()
     def failing_app():
         raise ValueError("test error")
 
+    sys.argv = ["test", "failing-app"]
     with pytest.raises(SystemExit) as exc_info:
-        run_without_tracebacks(failing_app)
+        run_without_tracebacks(app, ["failing-app"])
 
     assert exc_info.value.code == 1
     captured = capsys.readouterr()

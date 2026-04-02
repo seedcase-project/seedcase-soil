@@ -110,10 +110,10 @@ def _pretty_print_error(e: Exception) -> None:
     )
 
 
-def run_without_tracebacks(app: App) -> None:
+def run_without_tracebacks(app: App, args: list[str] = None) -> None:
     """Suppress traceback when running from CLI."""
     try:
-        app()
+        app(args)
     except Exception as e:
         _pretty_print_error(e)
         raise SystemExit(1)

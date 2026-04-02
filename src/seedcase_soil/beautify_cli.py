@@ -1,8 +1,9 @@
 from itertools import repeat
 from typing import Optional
 
+from cyclopts import App, Parameter, config
 from cyclopts.annotations import get_hint_name
-from cyclopts.help import HelpEntry
+from cyclopts.help import ColumnSpec, DefaultFormatter, DescriptionRenderer, HelpEntry
 from rich import box
 from rich import print as rprint
 from rich.console import Console
@@ -35,7 +36,38 @@ HELP_CONSOLE_THEME = Theme(
 )
 
 
-def format_param_help(entry: HelpEntry) -> str:
+def setup_cli(name: str, help: str, config_name: str) -> App:
+    """Setup the the Cyclopts app to use for the CLI."""
+    app = App(
+        name=name,
+        help=help,
+        help_formatter=DefaultFormatter(
+            column_specs=(
+                ColumnSpec(renderer=_format_param_help),
+                ColumnSpec(renderer=DescriptionRenderer(newline_metadata=True)),
+            )
+        ),
+        default_parameter=Parameter(negative=(), show_default=True),
+        console=Console(theme=HELP_CONSOLE_THEME),
+        config=[
+            config.Toml(
+                config_name,
+                search_parents=True,
+                use_commands_as_keys=False,
+            ),
+            config.Toml(
+                "pyproject.toml",
+                root_keys=["tool", "seedcase-flower"],
+                search_parents=True,
+                use_commands_as_keys=False,
+            ),
+        ],
+    )
+    app.register_install_completion_command()
+    return app
+
+
+def _format_param_help(entry: HelpEntry) -> str:
     """Re-structure the parameter help into a more readable format."""
     # Sort to put the flag first (eg `--source SOURCE` instead of the default
     # `SOURCE --source`)

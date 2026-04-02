@@ -2,16 +2,14 @@
 
 from .beautify_cli import (
     CONSOLE_THEME,
-    HELP_CONSOLE_THEME,
-    format_param_help,
     pretty_print,
     run_without_tracebacks,
+    setup_cli,
 )
 
 __all__ = [
     "CONSOLE_THEME",
-    "HELP_CONSOLE_THEME",
-    "format_param_help",
     "pretty_print",
     "run_without_tracebacks",
+    "setup_cli",
 ]

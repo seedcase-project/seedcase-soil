@@ -51,7 +51,7 @@ def setup_cli(name: str, help: str, config_name: str) -> App:
             ),
             config.Toml(
                 "pyproject.toml",
-                root_keys=["tool", "seedcase-flower"],
+                root_keys=["tool", name],
                 search_parents=True,
                 use_commands_as_keys=False,
             ),

@@ -8,9 +8,10 @@ metadata-files:
 
 {{< include /docs/includes/_badges.qmd >}}
 
-This package is mainly intended to contain functionality that we use within many of
-our Python packages. Rather than copy and paste code across these packages, we
-hoist them over into our "soil" to provide a foundation to "grow" those other packages.
+This package is mainly intended to contain functionality that we use
+within many of our Python packages. Rather than copy and paste code
+across these packages, we hoist them over into our "soil" to provide a
+foundation to "grow" those other packages.
 
 ::: callout-tip
 This Python package was generated from the

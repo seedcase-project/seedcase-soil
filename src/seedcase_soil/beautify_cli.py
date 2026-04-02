@@ -89,10 +89,15 @@ def _add_highlight_syntax(name: str, entry_type: Optional[type]) -> str:
     return formatted_name
 
 
-def pretty_print(verbose: bool, message: str) -> None:
+def pretty_print(message: str) -> None:
+    """Print with prettier formatting and highlighting."""
+    rprint(message)
+
+
+def print_if_verbose(verbose: bool, message: str) -> None:
     """Print with prettier formatting and highlighting."""
     if verbose:
-        rprint(message)
+        pretty_print(message)
 
 
 def _pretty_print_error(e: Exception) -> None:

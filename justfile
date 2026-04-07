@@ -61,6 +61,10 @@ format-python:
 format-md:
   uvx rumdl fmt --silent
 
+# Generate updated help-output strings for copy-pasting into test_cli.py
+generate-help-strings:
+    PYTHONPATH=. uv run python tools/generate-help-strings.py
+
 # Build the Python docstrings as a section in the website using quartodoc
 build-quartodoc:
   # To let Quarto know where python is.

@@ -31,7 +31,16 @@ CONSOLE_THEME = Theme(
 
 
 def setup_cli(name: str, help: str, config_name: str) -> App:
-    """Setup the the Cyclopts app to use for the CLI."""
+    """Setup the the Cyclopts app to use for the CLI.
+
+    Args:
+        name: The name of the package.
+        help: The message that show with `--help`.
+        config_name: The name of the configuration file.
+
+    Returns:
+        An Cyclopts app instance to be used as the CLI.
+    """
     app = App(
         name=name,
         help=help,
@@ -84,12 +93,21 @@ def _add_highlight_syntax(name: str, entry_type: Optional[type]) -> str:
 
 
 def pretty_print(message: str) -> None:
-    """Print with prettier formatting and highlighting."""
+    """Print with prettier formatting and highlighting.
+
+    Args:
+        message: Message to print.
+    """
     rprint(message)
 
 
 def print_if_verbose(verbose: bool, message: str) -> None:
-    """Print with prettier formatting and highlighting."""
+    """Print with prettier formatting and highlighting.
+
+    Args:
+        verbose: Indication of whether verbose mode is enabled.
+        message: Message to print.
+    """
     if verbose:
         pretty_print(message)
 
@@ -111,7 +129,15 @@ def _pretty_print_error(e: Exception) -> None:
 
 
 def run_without_tracebacks(app: App, args: Optional[list[str]] = None) -> None:
-    """Suppress traceback when running from CLI."""
+    """Suppress traceback when running from CLI.
+
+    Args:
+        app: The Cyclopts app instance to run as the CLI.
+        args: Any arguments to pass to the app upon launch. This is mostly for
+            testing purposes so that we can emulate running `app --cmd`
+            inside `run_without_tracebacks()`.
+
+    """
     try:
         app(args)
     except Exception as e:

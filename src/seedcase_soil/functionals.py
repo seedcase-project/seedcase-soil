@@ -16,7 +16,7 @@ def fmap(items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
     and that the output is always a list.
 
     Args:
-        items: The sequence of items, such as a list, sequence, array, or dict.
+        items: The sequence of items, such as a list, array, or dict.
         fn: The function to apply.
 
     Returns:
@@ -33,8 +33,8 @@ def keep(items: Iterable[In], fn: Callable[[In], bool]) -> list[In]:
     and that the output is always a list.
 
     Args:
-        items: The sequence of items, such as a list, sequence, array, or dict.
-        fn: The function with a condition that outputs a `bool`, which 
+        items: The sequence of items, such as a list, array, or dict.
+        fn: The function with a condition that outputs a `bool`, which
             determines which items to keep.
 
     Returns:
@@ -48,7 +48,7 @@ def flat_fmap(items: Iterable[In], fn: Callable[[In], Iterable[Out]]) -> list[Ou
 
 
     Args:
-        items: The sequence of items, such as a list, sequence, array, or dict.
+        items: The sequence of items, such as a list, array, or dict.
         fn: The function to apply to each element of `items`.
 
     Returns:
@@ -69,8 +69,8 @@ def pairwise_fmap(
     `fn(item1, item2)`.
 
     Args:
-        items1: The sequence of items, such as a list, sequence, array, or dict.
-        items2: The sequence of items, such as a list, sequence, array, or dict.
+        items1: The sequence of items, such as a list, array, or dict.
+        items2: The sequence of items, such as a list, array, or dict.
         fn: The function to apply on each `items1` and `items2` (in pairwise combination).
 
     Returns:

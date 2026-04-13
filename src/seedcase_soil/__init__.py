@@ -7,6 +7,9 @@ from .beautify_cli import (
     run_without_tracebacks,
     setup_cli,
 )
+from .example_datapackage import example_datapackage, write_example_datapackage
+from .parse_source import Address, parse_source
+from .read_properties import read_properties
 
 __all__ = [
     "CONSOLE_THEME",
@@ -14,4 +17,9 @@ __all__ = [
     "print_if_verbose",
     "run_without_tracebacks",
     "setup_cli",
+    "example_datapackage",
+    "write_example_datapackage",
+    "Address",
+    "parse_source",
+    "read_properties",
 ]

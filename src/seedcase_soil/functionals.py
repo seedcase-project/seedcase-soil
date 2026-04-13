@@ -46,7 +46,6 @@ def keep(items: Iterable[In], fn: Callable[[In], bool]) -> list[In]:
 def flat_fmap(items: Iterable[In], fn: Callable[[In], Iterable[Out]]) -> list[Out]:
     """Apply `fn` to each element in `items` and flatten one level.
 
-
     Args:
         items: The sequence of items, such as a list, array, or dict.
         fn: The function to apply to each element of `items`.
@@ -71,7 +70,7 @@ def pairwise_fmap(
     Args:
         items1: The sequence of items, such as a list, array, or dict.
         items2: The sequence of items, such as a list, array, or dict.
-        fn: The function to apply on each `items1` and `items2` (in pairwise combination).
+        fn: The function to apply to each pair of elements from `items1` and `items2`.
 
     Returns:
         A list with the output values after applying the function.

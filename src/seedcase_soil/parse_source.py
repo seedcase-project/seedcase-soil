@@ -17,7 +17,7 @@ def parse_source(source: str) -> Address:
     """Parse the source of a Data Package into a formal `Address`.
 
     Args:
-        source: The string representation for the location of a Data Package
+        source: The string representation for the location of a Data Package's
             metadata, either as a path, `https`, or `gh`/`github` repository.
 
     Returns:

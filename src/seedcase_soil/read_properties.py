@@ -19,7 +19,33 @@ JSON_CONTENT_TYPES = ("application/json", "application/ld+json", "application/ge
 
 
 def read_properties(address: Address) -> dict[str, Any]:
-    """Read properties from a local or remote datapackage."""
+    """Read properties from a local or remote datapackage.
+
+    Args:
+        address: The formal representation for the location of a Data Package's
+            metadata.
+
+    Returns:
+        A dictionary with datapackage metadata.
+
+    Raises:
+        FileDoesNotExistError:
+            If the file cannot be found.
+        JSONFormatError:
+            If the JSON files is malformatted.
+        HTTPStatusError:
+            If an HTTP error is encountered.
+        HTTPDomainError:
+            If the domain cannot be found.
+
+    Examples:
+        ```{python}
+        from seedcase_soil import parse_source
+
+        address = parse_source("gh:seedcase-project/example-seed-beetle@0.2.0")
+        read_properties(address)
+        ```
+    """
     datapackage: dict[str, Any]
     if address.local:
         path = Path(parse.urlsplit(address.value).path)

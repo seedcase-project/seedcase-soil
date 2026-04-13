@@ -16,6 +16,12 @@ individual release will not have many changes within it. Below is a list
 of the releases we've made so far, along with what was changed within
 each release.
 
+## 0.3.0 (2026-04-13)
+
+### Feat
+
+- ✨ add `parse_source()` and `read_properties()` (#8)
+
 ## 0.2.0 (2026-04-07)
 
 ### Feat

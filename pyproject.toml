@@ -1,6 +1,6 @@
 [project]
 name = "seedcase-soil"
-version = "0.2.0"
+version = "0.3.0"
 description = "Common functionality used within Seedcase Python packages."
 authors = [
   { name = "Luke W. Johnston", email = "lwjohnst@gmail.com" },

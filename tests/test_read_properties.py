@@ -74,10 +74,10 @@ def test_read_properties_remote_url(mocker, datapackage):
 
 @pytest.mark.usefixtures("mocker")
 def test_read_properties_raises_on_remote_invalid_json(mocker):
-    """Remote URL returning invalid JSON should raise JSONFormatError."""
+    """Remote URL returning malformed JSON should raise JSONFormatError."""
     mock_urlopen = mocker.patch("seedcase_soil.read_properties.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
-    mock_response.read.return_value = b"{ invalid json }"
+    mock_response.read.return_value = b"{ not json }"
 
     address = Address(value="https://example.com/datapackage.json", local=False)
 
@@ -103,7 +103,7 @@ def test_read_properties_raises_on_remote_404(mocker):
 
 @pytest.mark.usefixtures("mocker")
 def test_read_properties_raises_on_remote_dns_failure(mocker):
-    """Remote URL with invalid domain should raise HTTPDomainError."""
+    """Remote URL with a non-existent domain should raise HTTPDomainError."""
     mocker.patch(
         "seedcase_soil.read_properties.request.urlopen",
         side_effect=URLError(reason=Exception("[Errno -2] Name or service not known")),

@@ -6,7 +6,7 @@ from typing import Any
 
 
 def example_datapackage() -> dict[str, Any]:
-    """Return a valid example datapackage dictionary."""
+    """Return an example datapackage dictionary."""
     return {
         "name": "test-package",
         "title": "Test Package",
@@ -39,7 +39,7 @@ def example_datapackage() -> dict[str, Any]:
 
 
 def write_example_datapackage(directory: Path) -> Path:
-    """Write the example datapackage.json to a directory and return its path."""
+    """Write the example `datapackage.json` to a directory and return its path."""
     file_path = directory / "datapackage.json"
     file_path.write_text(json.dumps(example_datapackage()))
     return file_path

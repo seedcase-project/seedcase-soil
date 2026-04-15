@@ -2,16 +2,16 @@
 
 import pytest
 
-from seedcase_soil import load_datapackage, write_datapackage
+from seedcase_soil import load_example_datapackage, write_example_datapackage
 
 
 @pytest.fixture
 def datapackage():
     """Return a data package dict with resources."""
-    return load_datapackage()
+    return load_example_datapackage()
 
 
 @pytest.fixture
 def datapackage_path(tmp_path):
     """Create a temporary datapackage.json file and return its path as a string."""
-    return str(write_datapackage(tmp_path))
+    return str(write_example_datapackage(tmp_path))

@@ -1,41 +1,16 @@
 """Helpers for creating example Data Package metadata."""
 
 import json
+from importlib.resources import files
 from pathlib import Path
 from typing import Any
+
+EXAMPLE_DATAPACKAGE_PATH = files("seedcase_soil").joinpath("datapackages/simple.json")
 
 
 def example_datapackage() -> dict[str, Any]:
     """Return an example datapackage dictionary."""
-    return {
-        "name": "test-package",
-        "title": "Test Package",
-        "description": "A test datapackage",
-        "version": "1.0.0",
-        "licenses": [{"name": "MIT"}],
-        "resources": [
-            {
-                "name": "data",
-                "path": "data.csv",
-                "schema": {
-                    "fields": [
-                        {"name": "id", "type": "integer"},
-                        {"name": "name", "type": "string"},
-                    ]
-                },
-            },
-            {
-                "name": "data2",
-                "path": "data2.csv",
-                "schema": {
-                    "fields": [
-                        {"name": "id", "type": "integer"},
-                        {"name": "age", "type": "integer"},
-                    ]
-                },
-            },
-        ],
-    }
+    return json.loads(EXAMPLE_DATAPACKAGE_PATH.read_text())
 
 
 def write_example_datapackage(directory: Path) -> Path:

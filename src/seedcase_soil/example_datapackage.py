@@ -3,7 +3,7 @@
 import json
 from importlib.resources import files
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 
 def load_example_datapackage(name: str = "simple") -> dict[str, Any]:
@@ -11,7 +11,7 @@ def load_example_datapackage(name: str = "simple") -> dict[str, Any]:
     datapackage_path = files("seedcase_soil").joinpath(
         f"example-datapackages/{name}.json"
     )
-    return json.loads(datapackage_path.read_text())
+    return cast(dict[str, Any], json.loads(datapackage_path.read_text()))
 
 
 def write_example_datapackage(directory: Path, name: str = "simple") -> Path:

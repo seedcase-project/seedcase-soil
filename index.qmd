@@ -1,3 +1,21 @@
 ---
-title: "Welcome!"
+title: "{{< meta titles.full >}}"
 ---
+
+{{< include /docs/includes/_badges.qmd >}}
+
+This package it pretty simple: Have a common package where we can put
+functionality that we use across many of our Python packages. Rather
+than copy and paste code that we use across are packages, we hoist them
+over into our "soil" to provide a foundation to "grow" those other
+packages.
+
+While we apply a strong design and documentation-first approach to
+building our Python packages, we don't use this approach in Soil. That's
+because most of the design happens in the other packages where the
+functionality is initially developed. As we develop these
+functionalities in those other packages and find that our other packages
+could use them them, that's when we move them over into Soil.
+
+For that reason, Soil doesn't have a strong "scope" or "vision". It's
+more of a "toolkit" for us.

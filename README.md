@@ -1,6 +1,6 @@
 
 
-# seedcase-soil: Common functionality used within Seedcase Python packages
+# Soil: Common functionality used within Seedcase Python packages
 
 <!-- TODO: Include DOI after uploading -->
 

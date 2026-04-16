@@ -12,14 +12,10 @@ website:
     logo: "_extensions/seedcase-project/seedcase-theme/logos/seedcase/icon.svg"
     logo-alt: "seedcase-soil logo: Main page"
     left:
-      - text: "Overview"
-        href: docs/index.qmd
-      - text: "Guide"
-        href: docs/guide/index.qmd
-      - text: "Design"
-        href: docs/design/index.qmd
-      # - text: "Reference"
-      #   href: docs/reference/index.qmd
+      - text: "Home"
+        href: index.qmd
+      - text: "Reference"
+        href: docs/reference/index.qmd
     tools:
       - icon: github
         href: "https://github.com/seedcase-project/seedcase-soil"
@@ -28,39 +24,56 @@ website:
         href: "https://seedcase-project.org"
         aria-label: "House icon: Main website for the Seedcase Project"
   sidebar:
-    - id: overview
+    - id: home
       pinned: true
       style: "floating"
       contents:
-        - docs/index.qmd
-        - CHANGELOG.qmd
+        - text: "Overview"
+          href: index.qmd
+        - CHANGELOG.md
         - CONTRIBUTING.md
-    - id: design
-      contents:
-        - text: "Design"
-          href: docs/design/index.qmd
-    - id: guide
-      contents:
-        - section: "Guide"
-          href: docs/guide/index.qmd
 
-# quartodoc:
-#   sidebar: "docs/reference/_sidebar.yml"
-#   style: "pkgdown"
-#   dir: "docs/reference"
-#   package: "seedcase_soil"
-#   parser: google
-#   dynamic: true
-#   renderer:
-#     style: _renderer.py
-#     table_style: description-list
-#     show_signature_annotations: true
+quartodoc:
+  sidebar: "docs/reference/_sidebar.yml"
+  style: "pkgdown"
+  dir: "docs/reference"
+  package: "seedcase_soil"
+  parser: google
+  dynamic: true
+  renderer:
+    style: _renderer.py
+    table_style: description-list
+    show_signature_annotations: true
+  sections:
+    - title: "CLI helpers"
+      desc: "Functions that standardise the terminal output for our CLI-based Python apps and make them more user-friendly."
+      contents:
+        - "pretty_print"
+        - "print_if_verbose"
+        - "run_without_tracebacks"
+        - "setup_cli"
+    - title: "Example Data Packages"
+      desc: "Functions that create example data packages that we use for testing and demonstration purposes."
+      contents:
+        - "write_example_datapackage"
+    - title: "Functional programming"
+      desc: "Functions that support a functional programming style that we use in our Python packages."
+      contents:
+        - "fmap"
+        - "pairwise_fmap"
+        - "keep"
+        - "flat_fmap"
+    - title: "Reading Data Package properties"
+      desc: "Functions and classes for reading properties from Data Packages that we use across all our Python packages."
+      contents:
+        - "Address"
+        - "parse_source"
+        - "read_properties"
 
-# metadata-files:
-#   - docs/reference/_sidebar.yml
+metadata-files:
+  - docs/reference/_sidebar.yml
 
 format:
-  seedcase-theme-html
-    # TODO: Uncomment if using the goatcounter website visitor counter
-    # include-before-body:
-      # - "docs/includes/site-counter.html"
+  seedcase-theme-html:
+    include-before-body:
+      - "docs/includes/site-counter.html"

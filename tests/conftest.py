@@ -2,13 +2,13 @@
 
 import pytest
 
-from seedcase_soil import load_example_datapackage, write_example_datapackage
+from seedcase_soil import read_example_datapackage, write_example_datapackage
 
 
 @pytest.fixture
 def datapackage():
     """Return a data package dict with resources."""
-    return load_example_datapackage()
+    return read_example_datapackage()
 
 
 @pytest.fixture

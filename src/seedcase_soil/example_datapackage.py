@@ -15,7 +15,7 @@ class ExampleDatapackageName(StrEnum):
     flora_imperfect = "flora-imperfect"
 
 
-def load_example_datapackage(
+def read_example_datapackage(
     name: ExampleDatapackageName = ExampleDatapackageName.simple,
 ) -> dict[str, Any]:
     """Return an example datapackage dictionary."""
@@ -31,5 +31,5 @@ def write_example_datapackage(
 ) -> Path:
     """Write an example datapackage to a directory and return its path."""
     file_path = directory / "datapackage.json"
-    file_path.write_text(json.dumps(load_example_datapackage(name=name)))
+    file_path.write_text(json.dumps(read_example_datapackage(name=name)))
     return file_path

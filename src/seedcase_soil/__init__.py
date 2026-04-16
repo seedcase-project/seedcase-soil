@@ -7,7 +7,7 @@ from .beautify_cli import (
     run_without_tracebacks,
     setup_cli,
 )
-from .example_datapackage import load_example_datapackage, write_example_datapackage
+from .example_datapackage import read_example_datapackage, write_example_datapackage
 from .functionals import flat_fmap, fmap, keep, pairwise_fmap
 from .parse_source import Address, parse_source
 from .read_properties import read_properties
@@ -18,7 +18,7 @@ __all__ = [
     "print_if_verbose",
     "run_without_tracebacks",
     "setup_cli",
-    "load_example_datapackage",
+    "read_example_datapackage",
     "write_example_datapackage",
     "fmap",
     "pairwise_fmap",

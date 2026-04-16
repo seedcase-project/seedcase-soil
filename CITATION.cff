@@ -1,7 +1,9 @@
-title: "Soil: Commonly used functionality "
-# TODO: Add abstract of Python package.
-abstract: ""
+title: "Soil: Common functionality used within Seedcase Python packages"
 authors:
+  - family-names: Brødbæk
+    given-names: Signe Kirk
+    affiliation: "Steno Diabetes Center Aarhus"
+    orcid: "https://orcid.org/0009-0000-2208-7088"
   - family-names: Johnston
     given-names: Luke William
     orcid: "https://orcid.org/0000-0003-4169-2616"
@@ -14,8 +16,6 @@ authors:
 cff-version: 1.2.0
 # doi:
 # date-released: ""
-keywords:
-  - ""
 license: MIT
 message: "If you use this Python package, please cite it using these metadata."
 repository-code: "https://github.com/seedcase-project/seedcase-soil"

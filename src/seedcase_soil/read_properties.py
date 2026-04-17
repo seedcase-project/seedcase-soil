@@ -16,9 +16,10 @@ from .errors import (
 from .parse_source import Address
 
 JSON_CONTENT_TYPES = ("application/json", "application/ld+json", "application/geo+json")
+Properties = dict[str, Any]
 
 
-def read_properties(address: Address) -> dict[str, Any]:
+def read_properties(address: Address) -> Properties:
     """Read properties from a local or remote datapackage.
 
     Args:
@@ -46,7 +47,7 @@ def read_properties(address: Address) -> dict[str, Any]:
         read_properties(address)
         ```
     """
-    datapackage: dict[str, Any]
+    datapackage: Properties
     if address.local:
         path = Path(parse.urlsplit(address.value).path)
         try:

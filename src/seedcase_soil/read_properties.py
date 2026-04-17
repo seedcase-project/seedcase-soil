@@ -40,7 +40,7 @@ def read_properties(address: Address) -> dict[str, Any]:
 
     Examples:
         ```{python}
-        from seedcase_soil import parse_source
+        from seedcase_soil import parse_source, read_properties
 
         address = parse_source("gh:seedcase-project/example-seed-beetle@0.2.0")
         read_properties(address)

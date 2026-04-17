@@ -4,7 +4,7 @@ metadata-files:
   - _metadata.yml
 ---
 
-# {{< meta gh.repo >}}: Common functionality used within Seedcase Python packages
+# {{< meta titles.full >}}
 
 {{< include /docs/includes/_badges.qmd >}}
 

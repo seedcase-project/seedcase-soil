@@ -46,7 +46,7 @@ quartodoc:
     show_signature_annotations: true
   sections:
     - title: "CLI helpers"
-      desc: "Functions that standardise the terminal output for our CLI-based Python apps and make them more user-friendly."
+      desc: "Functionality that make our CLI apps more user-friendly, both in terms of appearance and behavior."
       contents:
         - "pretty_print"
         - "print_if_verbose"
@@ -57,14 +57,14 @@ quartodoc:
       contents:
         - "write_example_datapackage"
     - title: "Functional programming"
-      desc: "Functions that support a functional programming style that we use in our Python packages."
+      desc: "Functions that support a functional programming style."
       contents:
-        - "fmap"
-        - "pairwise_fmap"
         - "keep"
+        - "fmap"
         - "flat_fmap"
+        - "pairwise_fmap"
     - title: "Reading Data Package properties"
-      desc: "Functions and classes for reading properties from Data Packages that we use across all our Python packages."
+      desc: "Functionality for reading properties from Data Packages."
       contents:
         - "Address"
         - "parse_source"

@@ -1,4 +1,6 @@
-title: "Soil: Common functionality used within Seedcase Python packages"
+title: "Soil: Common ground shared by Seedcase Python packages"
+# TODO: Add abstract of Python package.
+abstract: ""
 authors:
   - family-names: Brødbæk
     given-names: Signe Kirk

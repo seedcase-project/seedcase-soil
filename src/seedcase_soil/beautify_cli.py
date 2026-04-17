@@ -30,29 +30,21 @@ CONSOLE_THEME = Theme(
 )
 
 
-def setup_cli(name: str, help: str, config_name: str) -> App:
+def setup_cli(name: str, help: str, config_name: Optional[str] = None) -> App:
     """Setup the the Cyclopts app to use for the CLI.
 
     Args:
         name: The name of the package.
         help: The message that show with `--help`.
-        config_name: The name of the configuration file.
+        config_name: The name of the configuration file, if any.
 
     Returns:
         An Cyclopts app instance to be used as the CLI.
     """
-    app = App(
-        name=name,
-        help=help,
-        help_formatter=DefaultFormatter(
-            column_specs=(
-                ColumnSpec(renderer=_format_param_help),
-                ColumnSpec(renderer=DescriptionRenderer(newline_metadata=True)),
-            )
-        ),
-        default_parameter=Parameter(negative=(), show_default=True),
-        console=Console(theme=CONSOLE_THEME),
-        config=[
+    if config_name is None:
+        config_file_setup = None
+    else:
+        config_file_setup = [
             config.Toml(
                 config_name,
                 search_parents=True,
@@ -64,7 +56,20 @@ def setup_cli(name: str, help: str, config_name: str) -> App:
                 search_parents=True,
                 use_commands_as_keys=False,
             ),
-        ],
+        ]
+
+    app = App(
+        name=name,
+        help=help,
+        help_formatter=DefaultFormatter(
+            column_specs=(
+                ColumnSpec(renderer=_format_param_help),
+                ColumnSpec(renderer=DescriptionRenderer(newline_metadata=True)),
+            )
+        ),
+        default_parameter=Parameter(negative=(), show_default=True),
+        console=Console(theme=CONSOLE_THEME),
+        config=config_file_setup,
     )
     app.register_install_completion_command()
     return app

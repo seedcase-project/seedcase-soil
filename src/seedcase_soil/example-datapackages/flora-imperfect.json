@@ -2,7 +2,7 @@
   "name": "flora",
   "title": "Observations of flora species and seasonal development",
   "id": "29b1b5e4-3f4c-4d2a-9f8e-123456789abc",
-  "description": "A dataset containing flora species records and their observed growth stages across different environments. This 'imperfect' suffix refers to that this datapackage does not include all the non-required fields used in Flower's built-in styles, e.g., missing resourece.title, field.title or field.description",
+  "description": "A dataset containing flora species records and their observed growth stages across different environments. The 'imperfect' suffix to the filename means that this datapackage does not include all the non-required fields used in Flower's built-in styles, e.g., missing resource.title, field.title or field.description",
   "version": "1.2.3",
   "created": "2025-11-07T11:12:56+01:00",
   "keywords": [

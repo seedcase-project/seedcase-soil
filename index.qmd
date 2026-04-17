@@ -4,12 +4,21 @@ title: "{{< meta titles.full >}}"
 
 {{< include /docs/includes/_badges.qmd >}}
 
-This package is intentionally simple: a shared ecosystem where we cultivate functionality used in many of our Python packages. Instead of copying the same code across packages, we apply [DRY principles](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) and transplant shared utilities into a common "soil". In this substrate, our other packages can take root and draw on a stable foundation as they grow.
+This package is intentionally simple: a shared ecosystem where we
+cultivate functionality used in many of our Python packages. Instead of
+copying the same code across packages, we apply
+[DRY principles](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+and transplant shared utilities into a common "soil". In this substrate,
+our other packages can take root and draw on a stable foundation as they
+grow.
 
 While we apply a strong design and documentation-first methodology to
-building our Python packages, we don't use this approach directly in Soil. That's
-because most of the design happens in the other packages where the
-functionality is initially developed. As we find that functionality from a specific package could benefit the larger Seedcase ecosystem,
-we hoist it over to Soil.
+building our Python packages, we don't use this approach directly in
+Soil. That's because most of the design happens in the other packages
+where the functionality is initially developed. As we find that
+functionality from a specific package could benefit the larger Seedcase
+ecosystem, we hoist it over to Soil.
 
-So while we have a clear vision for Soil, there is no detailed scope of the exact functionality that will reside in this package. Instead, this is something that will evolve organically over time as Seedcase grows.
+So while we have a clear vision for Soil, there is no detailed scope of
+the exact functionality that will reside in this package. Instead, this
+is something that will evolve organically over time as Seedcase grows.

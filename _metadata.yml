@@ -3,7 +3,7 @@ gh:
   org: seedcase-project
 
 titles:
-  full: "Soil: Common functionality used within Seedcase Python packages"
+  full: "Soil: Common ground shared by Seedcase Python packages"
 
 links:
   github: "https://github.com/seedcase-project/seedcase-soil"

@@ -4,8 +4,8 @@
 
 <!-- TODO: Include DOI after uploading -->
 
-<!-- [![PyPI Version](https://img.shields.io/pypi/v/seedcase-soil.svg)](https://pypi.org/project/seedcase-soil/) -->
-
+[![PyPI
+Version](https://img.shields.io/pypi/v/seedcase-soil.svg)](https://pypi.org/project/seedcase-soil/)
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-teal.json?raw=true.svg)](https://github.com/copier-org/copier)
 [![Python Version from PEP 621
 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https://raw.githubusercontent.com/seedcase-project/seedcase-soil/refs/heads/main/pyproject.toml)](https://github.com/seedcase-project/seedcase-soil/blob/main/pyproject.toml)
@@ -25,10 +25,9 @@ coverage](https://raw.githubusercontent.com/seedcase-project/seedcase-soil/cover
 [![pre-commit.ci
 status](https://results.pre-commit.ci/badge/github/seedcase-project/seedcase-soil/main.svg)](https://results.pre-commit.ci/latest/github/seedcase-project/seedcase-soil/main)
 [![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-<!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) -->
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 This package is mainly intended to contain functionality that we use
 within many of our Python packages. Rather than copy and paste code

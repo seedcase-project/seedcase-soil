@@ -12,7 +12,7 @@ website:
     logo: "_extensions/seedcase-project/seedcase-theme/logos/seedcase/icon.svg"
     logo-alt: "seedcase-soil logo: Main page"
     left:
-      - text: "Home"
+      - text: "Overview"
         href: index.qmd
       - text: "Reference"
         href: docs/reference/index.qmd
@@ -24,7 +24,7 @@ website:
         href: "https://seedcase-project.org"
         aria-label: "House icon: Main website for the Seedcase Project"
   sidebar:
-    - id: home
+    - id: overview
       pinned: true
       style: "floating"
       contents:

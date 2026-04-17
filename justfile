@@ -109,7 +109,8 @@ check-urls:
   lychee . \
     --verbose \
     --extensions md,qmd,py \
-    --exclude-path "_badges.qmd"
+    --exclude-path "_badges.qmd" \
+    --exclude-path "tests/*"
 
 # Build the documentation as PDF using Quarto
 build-pdf:

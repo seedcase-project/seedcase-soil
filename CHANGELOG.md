@@ -16,6 +16,12 @@ individual release will not have many changes within it. Below is a list
 of the releases we've made so far, along with what was changed within
 each release.
 
+## 0.7.1 (2026-04-21)
+
+### Fix
+
+- 🐛 export example name enum (#25)
+
 ## 0.7.0 (2026-04-20)
 
 ### Feat

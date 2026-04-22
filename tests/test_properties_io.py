@@ -3,6 +3,7 @@
 import json
 from email.message import Message
 from pathlib import Path
+from typing import Any
 from urllib.error import HTTPError, URLError
 
 import pytest
@@ -15,7 +16,7 @@ from seedcase_soil.errors import (
     NotJSONError,
 )
 from seedcase_soil.parse_source import Address, parse_source
-from seedcase_soil.read_properties import read_properties
+from seedcase_soil.properties_io import read_properties, write_properties
 
 # read_properties: local file ====
 
@@ -128,3 +129,51 @@ def test_read_properties_raises_on_non_json_content_type(mocker):
 
     with pytest.raises(NotJSONError, match="Expected JSON but received 'text/html"):
         read_properties(address)
+
+
+# write_properties:  ====
+
+
+def test_write_properties_local_path(
+    tmp_path: Path,
+    datapackage: dict[str, Any],
+) -> None:
+    """Writing to a local file path should create datapackage.json."""
+    output_path = tmp_path / "datapackage.json"
+
+    written_path = write_properties(datapackage, output_path)
+
+    assert written_path == output_path
+    assert output_path.exists()
+
+
+def test_write_properties_accepts_string_path(
+    tmp_path: Path,
+    datapackage: dict[str, Any],
+) -> None:
+    """Writing to a string path should also work."""
+    output_path = tmp_path / "datapackage.json"
+
+    written_path = write_properties(datapackage, str(output_path))
+
+    assert written_path == output_path
+    assert output_path.exists()
+
+
+def test_write_properties_raises_on_missing_parent(
+    tmp_path: Path,
+    datapackage: dict[str, Any],
+) -> None:
+    """Writing to a path with missing parent directory should fail."""
+    output_path = tmp_path / "missing" / "datapackage.json"
+
+    with pytest.raises(FileNotFoundError):
+        write_properties(datapackage, output_path)
+
+
+def test_write_properties_raises_on_non_serializable(tmp_path: Path) -> None:
+    """Writing non-JSON-serializable properties should fail."""
+    output_path = tmp_path / "datapackage.json"
+
+    with pytest.raises(TypeError):
+        write_properties({"name": "test", "bad": Path("x")}, output_path)

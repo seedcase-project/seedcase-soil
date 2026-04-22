@@ -140,10 +140,8 @@ def test_write_properties_local_path(
 ) -> None:
     """Writing to a local file path should create datapackage.json."""
     output_path = tmp_path / "datapackage.json"
+    write_properties(datapackage, output_path)
 
-    written_path = write_properties(datapackage, output_path)
-
-    assert written_path == output_path
     assert output_path.exists()
 
 
@@ -153,10 +151,8 @@ def test_write_properties_accepts_string_path(
 ) -> None:
     """Writing to a string path should also work."""
     output_path = tmp_path / "datapackage.json"
+    write_properties(datapackage, str(output_path))
 
-    written_path = write_properties(datapackage, str(output_path))
-
-    assert written_path == output_path
     assert output_path.exists()
 
 

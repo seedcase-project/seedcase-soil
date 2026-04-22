@@ -78,7 +78,7 @@ def read_properties(address: Address) -> Properties:
     return datapackage
 
 
-def write_properties(properties: Properties, path: Union[str, Path]):
+def write_properties(properties: Properties, path: Union[str, Path]) -> None:
     """Write properties to a local datapackage file and return the path.
 
     Args:

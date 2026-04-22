@@ -69,6 +69,7 @@ quartodoc:
         - "Address"
         - "parse_source"
         - "read_properties"
+        - "write_properties"
 
 metadata-files:
   - docs/reference/_sidebar.yml

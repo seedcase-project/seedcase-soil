@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import Any, Union
+from typing import Any
 from urllib import parse, request
 from urllib.error import HTTPError, URLError
 
@@ -78,7 +78,7 @@ def read_properties(address: Address) -> Properties:
     return datapackage
 
 
-def write_properties(properties: Properties, path: Union[str, Path]) -> None:
+def write_properties(properties: Properties, path: Path) -> None:
     """Write properties to a local datapackage file and return the path.
 
     Args:
@@ -91,6 +91,5 @@ def write_properties(properties: Properties, path: Union[str, Path]) -> None:
         TypeError:
             If `properties` is not JSON serializable.
     """
-    path = Path(path) if isinstance(path, str) else path
     text = json.dumps(properties, indent=2, ensure_ascii=False)
     path.write_text(text)

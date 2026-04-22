@@ -12,7 +12,6 @@ class Example(StrEnum):
     simple = "simple"
     flora = "flora"
     flora_imperfect = "flora-imperfect"
-    woolly = "woolly"
 
     @property
     def address(self) -> Address:

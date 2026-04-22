@@ -62,7 +62,7 @@ def test_read_properties_raises_on_malformed_json(tmp_path):
 @pytest.mark.usefixtures("mocker")
 def test_read_properties_remote_url(mocker, datapackage):
     """Reading a remote datapackage.json URL should return its contents."""
-    mock_urlopen = mocker.patch("seedcase_soil.read_properties.request.urlopen")
+    mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
     mock_response.read.return_value = json.dumps(datapackage).encode()
 
@@ -76,7 +76,7 @@ def test_read_properties_remote_url(mocker, datapackage):
 @pytest.mark.usefixtures("mocker")
 def test_read_properties_raises_on_remote_invalid_json(mocker):
     """Remote URL returning malformed JSON should raise JSONFormatError."""
-    mock_urlopen = mocker.patch("seedcase_soil.read_properties.request.urlopen")
+    mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
     mock_response.read.return_value = b"{ not json }"
 
@@ -90,7 +90,7 @@ def test_read_properties_raises_on_remote_invalid_json(mocker):
 def test_read_properties_raises_on_remote_404(mocker):
     """A remote URL returning 404 should raise HTTPStatusError."""
     mocker.patch(
-        "seedcase_soil.read_properties.request.urlopen",
+        "seedcase_soil.properties_io.request.urlopen",
         side_effect=HTTPError(
             "https://example.com/datapackage.json", 404, "Not Found", Message(), None
         ),
@@ -106,7 +106,7 @@ def test_read_properties_raises_on_remote_404(mocker):
 def test_read_properties_raises_on_remote_dns_failure(mocker):
     """Remote URL with a non-existent domain should raise HTTPDomainError."""
     mocker.patch(
-        "seedcase_soil.read_properties.request.urlopen",
+        "seedcase_soil.properties_io.request.urlopen",
         side_effect=URLError(reason=Exception("[Errno -2] Name or service not known")),
     )
 
@@ -121,7 +121,7 @@ def test_read_properties_raises_on_remote_dns_failure(mocker):
 @pytest.mark.usefixtures("mocker")
 def test_read_properties_raises_on_non_json_content_type(mocker):
     """Remote URL returning non-JSON content type should raise NotJSONError."""
-    mock_urlopen = mocker.patch("seedcase_soil.read_properties.request.urlopen")
+    mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
     mock_response.headers.get.return_value = "text/html; charset=utf-8"
 

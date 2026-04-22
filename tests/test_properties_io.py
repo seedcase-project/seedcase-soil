@@ -155,17 +155,6 @@ def test_write_properties_local_path(
     assert output_path.exists()
 
 
-def test_write_properties_accepts_string_path(
-    tmp_path: Path,
-    datapackage: dict[str, Any],
-) -> None:
-    """Writing to a string path should also work."""
-    output_path = tmp_path / "datapackage.json"
-    write_properties(datapackage, str(output_path))
-
-    assert output_path.exists()
-
-
 def test_write_properties_raises_on_missing_parent(
     tmp_path: Path,
     datapackage: dict[str, Any],

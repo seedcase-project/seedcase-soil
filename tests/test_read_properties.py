@@ -14,6 +14,7 @@ from seedcase_soil.errors import (
     JSONFormatError,
     NotJSONError,
 )
+from seedcase_soil.example_datapackage import Example
 from seedcase_soil.parse_source import Address, parse_source
 from seedcase_soil.read_properties import read_properties
 
@@ -53,6 +54,15 @@ def test_read_properties_raises_on_malformed_json(tmp_path):
 
     with pytest.raises(JSONFormatError):
         read_properties(address)
+
+
+@pytest.mark.parametrize("example", list(Example))
+def test_read_properties_reads_all_builtin_examples(example: Example) -> None:
+    """Every built-in example should be readable with `read_properties`."""
+    properties = read_properties(example.address)
+
+    assert isinstance(properties, dict)
+    assert len(properties) > 0
 
 
 # read_properties: remote file ====

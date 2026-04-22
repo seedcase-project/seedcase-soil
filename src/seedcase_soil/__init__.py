@@ -10,7 +10,7 @@ from .beautify_cli import (
 from .example_datapackage import Example
 from .functionals import flat_fmap, fmap, keep, pairwise_fmap
 from .parse_source import Address, parse_source
-from .read_properties import Properties, read_properties
+from .properties_io import Properties, read_properties, write_properties
 
 __all__ = [
     "CONSOLE_THEME",
@@ -27,4 +27,5 @@ __all__ = [
     "Properties",
     "parse_source",
     "read_properties",
+    "write_properties",
 ]

@@ -13,6 +13,7 @@ class ExampleDatapackageName(StrEnum):
     simple = "simple"
     flora = "flora"
     flora_imperfect = "flora-imperfect"
+    woolly = "woolly"
 
 
 def read_example_datapackage(

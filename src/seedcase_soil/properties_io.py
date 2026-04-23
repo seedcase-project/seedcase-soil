@@ -1,4 +1,4 @@
-"""Function for reading Data Package properties."""
+"""Functions for reading and writing Data Package properties."""
 
 import json
 from pathlib import Path
@@ -76,3 +76,20 @@ def read_properties(address: Address) -> Properties:
         except json.JSONDecodeError as e:
             raise JSONFormatError(address.value, str(e))
     return datapackage
+
+
+def write_properties(properties: Properties, path: Path) -> None:
+    """Write properties to a local datapackage file and return the path.
+
+    Args:
+        properties: The Data Package Properties to write.
+        path: The file path to write the properties to.
+
+    Raises:
+        FileNotFoundError:
+            If the parent directory of the target file does not exist.
+        TypeError:
+            If `properties` is not JSON serializable.
+    """
+    text = json.dumps(properties, indent=2, ensure_ascii=False)
+    path.write_text(text)

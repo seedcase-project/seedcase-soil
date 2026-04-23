@@ -84,7 +84,7 @@ def write_properties(properties: Properties, path: Path) -> Path:
     Args:
         properties: The Data Package Properties to write.
         path: The file path to write the properties to.
-        
+
     Return:
         The path for the file that was just written.
 

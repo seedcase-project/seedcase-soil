@@ -78,12 +78,15 @@ def read_properties(address: Address) -> Properties:
     return datapackage
 
 
-def write_properties(properties: Properties, path: Path) -> None:
+def write_properties(properties: Properties, path: Path) -> Path:
     """Write properties to a local datapackage file and return the path.
 
     Args:
         properties: The Data Package Properties to write.
         path: The file path to write the properties to.
+        
+    Return:
+        The path for the file that was just written.
 
     Raises:
         FileNotFoundError:
@@ -93,3 +96,4 @@ def write_properties(properties: Properties, path: Path) -> None:
     """
     text = json.dumps(properties, indent=2, ensure_ascii=False)
     path.write_text(text)
+    return path

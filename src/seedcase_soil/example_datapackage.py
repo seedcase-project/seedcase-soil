@@ -2,6 +2,7 @@
 
 from enum import StrEnum
 from importlib.resources import files
+from pathlib import Path
 
 from .parse_source import Address
 
@@ -15,9 +16,14 @@ class Example(StrEnum):
     woolly = "woolly"
 
     @property
-    def address(self) -> Address:
-        """Return this example's local `Address`."""
+    def path(self) -> Path:
+        """Return this example's `Path`."""
         datapackage_path = files("seedcase_soil").joinpath(
             f"example-datapackages/{self.value}.json"
         )
-        return Address(value=str(datapackage_path), local=True)
+        return Path(str(datapackage_path))
+
+    @property
+    def address(self) -> Address:
+        """Return this example's `Address`."""
+        return Address(value=str(self.path), local=True)

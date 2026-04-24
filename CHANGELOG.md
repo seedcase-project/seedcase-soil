@@ -20,7 +20,7 @@ each release.
 
 ### Feat
 
--  ✨ add woolly example package (#28)
+- ✨ add woolly example package (#28)
 
 ## 0.8.0 (2026-04-23)
 

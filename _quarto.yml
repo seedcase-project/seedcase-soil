@@ -53,10 +53,9 @@ quartodoc:
         - "run_without_tracebacks"
         - "setup_cli"
     - title: "Example Data Packages"
-      desc: "Functions that create example data packages that we use for testing and demonstration purposes."
+      desc: "Class to access example data packages that we use for testing and demonstration purposes."
       contents:
-        - "write_example_datapackage"
-        - "read_example_datapackage"
+        - "Example"
     - title: "Functional programming"
       desc: "Functions that support a functional programming style."
       contents:

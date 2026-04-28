@@ -12,7 +12,7 @@ from rich.console import Console
 def format_output_for_docs(
     command: Sequence[str],
     *,
-    width: int = 62,
+    width: int = 60,
 ) -> None:
     """Run a command and display compact, colored output in docs.
 

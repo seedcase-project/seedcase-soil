@@ -56,6 +56,8 @@ def _ansi_to_html(output: str) -> str:
     html = console.export_html(inline_styles=True, code_format="{code}").rstrip()
     return (
         html.replace("#800000", "#E75C58")
+        .replace("#000080", "#7AA2F7")
         .replace("#008000", "#00A250")
         .replace("#008080", "#60C6C8")
+        .replace("#808080", "#8087A5")
     )

@@ -1,7 +1,7 @@
 """Helpers for rendering command output in documentation."""
 
 import os
-import subprocess
+import subprocess  # nosec B404
 from collections.abc import Sequence
 from io import StringIO
 
@@ -26,7 +26,7 @@ def format_output_for_docs(
     full_env = os.environ.copy()
     full_env.update({"COLUMNS": str(width), "FORCE_COLOR": "1"})
 
-    result = subprocess.run(
+    result = subprocess.run(  # nosec B603
         command,
         env=full_env,
         stdout=subprocess.PIPE,

@@ -82,4 +82,5 @@ def _ansi_to_html(output: str) -> str:
         .replace("#008000", "#9ECE6A")
         .replace("#008080", "#7DCFFF")
         .replace("#808080", "#8087A5")
+        .replace("#808000", "#E0AF68")
     )

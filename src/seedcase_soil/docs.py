@@ -2,9 +2,8 @@
 
 import os
 import subprocess
-from collections.abc import Mapping, Sequence
+from collections.abc import Sequence
 from io import StringIO
-from pathlib import Path
 
 from rich.ansi import AnsiDecoder
 from rich.console import Console
@@ -13,17 +12,13 @@ from rich.console import Console
 def format_output_for_docs(
     command: Sequence[str],
     *,
-    width: int = 72,
-    cwd: str | Path | None = None,
-    env: Mapping[str, str] | None = None,
+    width: int = 62,
 ) -> subprocess.CompletedProcess[str]:
     """Run a command and display compact, colored output in docs.
 
     Args:
         command: The command to run, as a list of strings.
         width: The terminal width used when rendering command output.
-        cwd: The working directory to run the command from.
-        env: Environment variables to add or override.
 
     Returns:
         The completed process from running the command.
@@ -32,12 +27,9 @@ def format_output_for_docs(
 
     full_env = os.environ.copy()
     full_env.update({"COLUMNS": str(width), "FORCE_COLOR": "1"})
-    if env is not None:
-        full_env.update(env)
 
     result = subprocess.run(
         command,
-        cwd=cwd,
         env=full_env,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

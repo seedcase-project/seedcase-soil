@@ -40,13 +40,11 @@ def format_output_for_docs(
 def _html_output(output: str) -> str:
     pre_style = (
         "overflow-x: auto; line-height: normal; "
-        "background-color: #1A1B26; color: #C0CAF5; "
-        "border-radius: 0.5rem; padding: 1rem; "
         "font-family: Menlo, 'DejaVu Sans Mono', consolas, 'Courier New', monospace;"
     )
     code_style = (
         "white-space: pre; overflow-wrap: normal; word-break: normal; "
-        "background: transparent; color: inherit;"
+        "background: transparent; color: var(--bs-body-color);"
     )
     return (
         f'<pre style="{pre_style}">'
@@ -59,13 +57,13 @@ def _ansi_to_html(output: str) -> str:
     lines = list(AnsiDecoder().decode(output.rstrip()))
     console.print(*lines, sep="\n", soft_wrap=True)
     html = console.export_html(inline_styles=True, code_format="{code}").rstrip()
-    bold_style = "color: #C0CAF5; text-decoration-color: #C0CAF5; font-weight: bold"
+    bold_style = "color: inherit; text-decoration-color: inherit; font-weight: bold"
     return (
         html.replace(
             '<span style="font-weight: bold">',
             f'<span style="{bold_style}">',
         )
-        .replace("#003B4F", "#C0CAF5")
+        .replace("#003B4F", "inherit")
         .replace("#800000", "#E75C58")
         .replace("#000080", "#7AA2F7")
         .replace("#008000", "#00A250")

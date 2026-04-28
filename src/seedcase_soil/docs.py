@@ -60,15 +60,26 @@ def _ansi_to_html(output: str) -> str:
     console.print(*lines, sep="\n", soft_wrap=True)
     html = console.export_html(inline_styles=True, code_format="{code}").rstrip()
     bold_style = "color: inherit; text-decoration-color: inherit; font-weight: bold"
+    underline_style = "color: inherit; text-decoration-color: inherit"
     return (
         html.replace(
             '<span style="font-weight: bold">',
             f'<span style="{bold_style}">',
         )
+        .replace(
+            '<span style="text-decoration: underline">',
+            '<span style="color: inherit; text-decoration-color: inherit; '
+            'text-decoration: underline">',
+        )
+        .replace(
+            "color: #008080; text-decoration-color: #008080; "
+            "text-decoration: underline",
+            f"{underline_style}; text-decoration: underline",
+        )
         .replace("#003B4F", "inherit")
-        .replace("#800000", "#E75C58")
+        .replace("#800000", "#F7768E")
         .replace("#000080", "#7AA2F7")
-        .replace("#008000", "#00A250")
-        .replace("#008080", "#60C6C8")
+        .replace("#008000", "#9ECE6A")
+        .replace("#008080", "#7DCFFF")
         .replace("#808080", "#8087A5")
     )

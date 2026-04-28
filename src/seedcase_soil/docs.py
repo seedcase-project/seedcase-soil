@@ -40,9 +40,14 @@ def format_output_for_docs(
 def _html_output(output: str) -> str:
     pre_style = (
         "overflow-x: auto; line-height: normal; "
+        "background-color: #1A1B26; color: #C0CAF5; "
+        "border-radius: 0.5rem; padding: 1rem; "
         "font-family: Menlo, 'DejaVu Sans Mono', consolas, 'Courier New', monospace;"
     )
-    code_style = "white-space: pre; overflow-wrap: normal; word-break: normal;"
+    code_style = (
+        "white-space: pre; overflow-wrap: normal; word-break: normal; "
+        "background: transparent; color: inherit;"
+    )
     return (
         f'<pre style="{pre_style}">'
         f'<code style="{code_style}">{_ansi_to_html(output)}</code></pre>'

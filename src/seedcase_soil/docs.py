@@ -41,7 +41,7 @@ def _html_output(output: str) -> str:
     pre_style = (
         "overflow-x: auto; line-height: normal; "
         "background-color: #1A1B26; color: #C0CAF5; "
-        "border-radius: 0.5rem; padding: 1rem; "
+        "border-radius: 0.5rem; padding: 0.5rem; "
         "font-family: Menlo, 'DejaVu Sans Mono', consolas, 'Courier New', monospace;"
     )
     code_style = (

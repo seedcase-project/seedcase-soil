@@ -34,7 +34,7 @@ def format_output_for_docs(
         text=True,
         check=False,
     )
-    display({"text/html": _html_output(result.stdout)}, raw=True)
+    display({"text/html": _html_output(result.stdout)}, raw=True)  # type: ignore[no-untyped-call]
 
 
 def _html_output(output: str) -> str:

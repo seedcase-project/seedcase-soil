@@ -13,15 +13,13 @@ def format_output_for_docs(
     command: Sequence[str],
     *,
     width: int = 62,
-) -> subprocess.CompletedProcess[str]:
+) -> None:
     """Run a command and display compact, colored output in docs.
 
     Args:
         command: The command to run, as a list of strings.
         width: The terminal width used when rendering command output.
 
-    Returns:
-        The completed process from running the command.
     """
     from IPython.display import display
 
@@ -37,7 +35,6 @@ def format_output_for_docs(
         check=False,
     )
     display({"text/html": _html_output(result.stdout)}, raw=True)
-    return result
 
 
 def _html_output(output: str) -> str:

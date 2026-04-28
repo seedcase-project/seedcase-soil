@@ -40,11 +40,13 @@ def format_output_for_docs(
 def _html_output(output: str) -> str:
     pre_style = (
         "overflow-x: auto; line-height: normal; "
+        "background-color: #1A1B26; color: #C0CAF5; "
+        "border-radius: 0.5rem; padding: 1rem; "
         "font-family: Menlo, 'DejaVu Sans Mono', consolas, 'Courier New', monospace;"
     )
     code_style = (
         "white-space: pre; overflow-wrap: normal; word-break: normal; "
-        "background: transparent; color: var(--bs-body-color);"
+        "background: transparent; color: inherit;"
     )
     return (
         f'<pre style="{pre_style}">'

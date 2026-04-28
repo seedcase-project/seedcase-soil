@@ -59,8 +59,14 @@ def _ansi_to_html(output: str) -> str:
     lines = list(AnsiDecoder().decode(output.rstrip()))
     console.print(*lines, sep="\n", soft_wrap=True)
     html = console.export_html(inline_styles=True, code_format="{code}").rstrip()
+    bold_style = "color: #C0CAF5; text-decoration-color: #C0CAF5; font-weight: bold"
     return (
-        html.replace("#800000", "#E75C58")
+        html.replace(
+            '<span style="font-weight: bold">',
+            f'<span style="{bold_style}">',
+        )
+        .replace("#003B4F", "#C0CAF5")
+        .replace("#800000", "#E75C58")
         .replace("#000080", "#7AA2F7")
         .replace("#008000", "#00A250")
         .replace("#008080", "#60C6C8")

@@ -16,10 +16,21 @@ def format_output_for_docs(
 ) -> None:
     """Run a command and display compact, colored output in docs.
 
+    This strips newlines, makes the output more narrow, enable overflow
+    instead of wrapping, and remaps some colors. Currently everything
+    except the output width is hard-coded to a certain style that emulates
+    the look of the output when running in the terminal, but this could
+    be parametrized later if a need arise.
+
     Args:
         command: The command to run, as a list of strings.
         width: The terminal width used when rendering command output.
 
+    Examples:
+        To run the command `cdp check --strict` and format the output:
+        ```{python}
+        format_output_for_docs(["cdp", "check", "--strict"])
+        ```
     """
     from IPython.display import display
 

@@ -7,6 +7,7 @@ from .beautify_cli import (
     run_without_tracebacks,
     setup_cli,
 )
+from .docs import format_output_for_docs
 from .example_datapackage import Example
 from .functionals import flat_fmap, fmap, keep, pairwise_fmap
 from .parse_source import Address, parse_source
@@ -18,6 +19,7 @@ __all__ = [
     "print_if_verbose",
     "run_without_tracebacks",
     "setup_cli",
+    "format_output_for_docs",
     "Example",
     "fmap",
     "pairwise_fmap",

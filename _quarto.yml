@@ -70,6 +70,10 @@ quartodoc:
         - "parse_source"
         - "read_properties"
         - "write_properties"
+    - title: "Documentation helpers"
+      desc: "Functionality that helps with creating our documentation."
+      contents:
+        - "format_output_for_docs"
 
 metadata-files:
   - docs/reference/_sidebar.yml

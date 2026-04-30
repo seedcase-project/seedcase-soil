@@ -28,7 +28,7 @@ def format_output_for_docs(
 
     Examples:
         To run the command `cdp check --strict` and format the output:
-        ```{python}
+        ```python
         format_output_for_docs(["cdp", "check", "--strict"])
         ```
     """

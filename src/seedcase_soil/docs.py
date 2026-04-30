@@ -20,7 +20,7 @@ def format_output_for_docs(
     instead of wrapping, and remaps some colors. Currently everything
     except the output width is hard-coded to a certain style that emulates
     the look of the output when running in the terminal, but this could
-    be parametrized later if a need arise.
+    be parametrized later if the need arises.
 
     Args:
         command: The command to run, as a list of strings.

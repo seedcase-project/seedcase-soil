@@ -3,8 +3,7 @@
 ## :bug: Issues and bugs
 
 The easiest way to contribute is to report issues or bugs that you might
-find while using `seedcase-soil`. You can do this by creating a
-[new](https://github.com/seedcase-project/seedcase-soil/issues/new/choose)
+find while using `seedcase-soil`. You can do this by creating a new
 issue on our GitHub repository.
 
 ## :pencil2: Adding or modifying content

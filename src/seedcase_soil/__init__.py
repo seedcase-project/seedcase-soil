@@ -7,9 +7,11 @@ from .beautify_cli import (
     run_without_tracebacks,
     setup_cli,
 )
-from .example_datapackage import example_datapackage, write_example_datapackage
+from .docs import format_output_for_docs
+from .example_datapackage import Example
+from .functionals import flat_fmap, fmap, keep, pairwise_fmap
 from .parse_source import Address, parse_source
-from .read_properties import read_properties
+from .properties_io import Properties, read_properties, write_properties
 
 __all__ = [
     "CONSOLE_THEME",
@@ -17,9 +19,15 @@ __all__ = [
     "print_if_verbose",
     "run_without_tracebacks",
     "setup_cli",
-    "example_datapackage",
-    "write_example_datapackage",
+    "format_output_for_docs",
+    "Example",
+    "fmap",
+    "pairwise_fmap",
+    "keep",
+    "flat_fmap",
     "Address",
+    "Properties",
     "parse_source",
     "read_properties",
+    "write_properties",
 ]

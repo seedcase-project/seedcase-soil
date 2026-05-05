@@ -1,45 +1,29 @@
-"""Helpers for creating example Data Package metadata."""
+"""Enum of built-in Data Package examples."""
 
-import json
+from enum import StrEnum
+from importlib.resources import files
 from pathlib import Path
-from typing import Any
+
+from .parse_source import Address
 
 
-def example_datapackage() -> dict[str, Any]:
-    """Return an example datapackage dictionary."""
-    return {
-        "name": "test-package",
-        "title": "Test Package",
-        "description": "A test datapackage",
-        "version": "1.0.0",
-        "licenses": [{"name": "MIT"}],
-        "resources": [
-            {
-                "name": "data",
-                "path": "data.csv",
-                "schema": {
-                    "fields": [
-                        {"name": "id", "type": "integer"},
-                        {"name": "name", "type": "string"},
-                    ]
-                },
-            },
-            {
-                "name": "data2",
-                "path": "data2.csv",
-                "schema": {
-                    "fields": [
-                        {"name": "id", "type": "integer"},
-                        {"name": "age", "type": "integer"},
-                    ]
-                },
-            },
-        ],
-    }
+class Example(StrEnum):
+    """Available built-in example datapackage names."""
 
+    simple = "simple"
+    flora = "flora"
+    flora_imperfect = "flora-imperfect"
+    woolly = "woolly"
 
-def write_example_datapackage(directory: Path) -> Path:
-    """Write the example `datapackage.json` to a directory and return its path."""
-    file_path = directory / "datapackage.json"
-    file_path.write_text(json.dumps(example_datapackage()))
-    return file_path
+    @property
+    def path(self) -> Path:
+        """Return this example's `Path`."""
+        datapackage_path = files("seedcase_soil").joinpath(
+            f"example-datapackages/{self.value}.json"
+        )
+        return Path(str(datapackage_path))
+
+    @property
+    def address(self) -> Address:
+        """Return this example's `Address`."""
+        return Address(value=str(self.path), local=True)

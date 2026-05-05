@@ -1,4 +1,4 @@
-"""Function for reading Data Package properties."""
+"""Functions for reading and writing Data Package properties."""
 
 import json
 from pathlib import Path
@@ -16,9 +16,10 @@ from .errors import (
 from .parse_source import Address
 
 JSON_CONTENT_TYPES = ("application/json", "application/ld+json", "application/geo+json")
+Properties = dict[str, Any]
 
 
-def read_properties(address: Address) -> dict[str, Any]:
+def read_properties(address: Address) -> Properties:
     """Read properties from a local or remote datapackage.
 
     Args:
@@ -40,13 +41,13 @@ def read_properties(address: Address) -> dict[str, Any]:
 
     Examples:
         ```{python}
-        from seedcase_soil import parse_source
+        from seedcase_soil import parse_source, read_properties
 
         address = parse_source("gh:seedcase-project/example-seed-beetle@0.2.0")
         read_properties(address)
         ```
     """
-    datapackage: dict[str, Any]
+    datapackage: Properties
     if address.local:
         path = Path(parse.urlsplit(address.value).path)
         try:
@@ -75,3 +76,24 @@ def read_properties(address: Address) -> dict[str, Any]:
         except json.JSONDecodeError as e:
             raise JSONFormatError(address.value, str(e))
     return datapackage
+
+
+def write_properties(properties: Properties, path: Path) -> Path:
+    """Write properties to a local datapackage file and return the path.
+
+    Args:
+        properties: The Data Package Properties to write.
+        path: The file path to write the properties to.
+
+    Return:
+        The path for the file that was just written.
+
+    Raises:
+        FileNotFoundError:
+            If the parent directory of the target file does not exist.
+        TypeError:
+            If `properties` is not JSON serializable.
+    """
+    text = json.dumps(properties, indent=2, ensure_ascii=False)
+    path.write_text(text)
+    return path

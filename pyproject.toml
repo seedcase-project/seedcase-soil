@@ -16,7 +16,12 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.12"
-dependencies = ["cyclopts>=4.10.1", "rich>=14.3.3"]
+dependencies = [
+    "cyclopts>=4.10.1",
+    "emoji>=2.15.0",
+    "rich>=14.3.3",
+    "seedir>=0.5.1",
+]
 
 [project.urls]
 homepage = "https://soil.seedcase-project.org"

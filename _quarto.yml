@@ -73,6 +73,7 @@ quartodoc:
     - title: "Documentation helpers"
       desc: "Functionality that helps with creating our documentation."
       contents:
+        - "file_tree"
         - "format_output_for_docs"
 
 metadata-files:

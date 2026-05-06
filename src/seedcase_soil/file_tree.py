@@ -16,10 +16,6 @@ def file_tree(path: Path) -> str:
     if not path.is_dir():
         raise ValueError(f"{path} is not a directory.")
 
-    return sd.seedir(
-        path,
-        style="emoji",
-        exclude_folders=[".git"],
-        first="folders",
-        printout=False,
+    return sd.seedir(  # type: ignore[no-any-return]
+        path, style="emoji", exclude_folders=[".git"], first="folders", printout=False
     )

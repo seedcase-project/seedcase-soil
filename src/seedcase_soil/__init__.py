@@ -9,6 +9,7 @@ from .beautify_cli import (
 )
 from .docs import format_output_for_docs
 from .example_datapackage import Example
+from .file_tree import file_tree
 from .functionals import flat_fmap, fmap, keep, pairwise_fmap
 from .parse_source import Address, parse_source
 from .properties_io import Properties, read_properties, write_properties
@@ -19,6 +20,7 @@ __all__ = [
     "print_if_verbose",
     "run_without_tracebacks",
     "setup_cli",
+    "file_tree",
     "format_output_for_docs",
     "Example",
     "fmap",

@@ -4,13 +4,13 @@ from seedir import seedir
 
 
 def file_tree(path: Path) -> str:
-    """Show file tree excluding `.git` files.
+    """Return the directory file tree with emojis as a string, excluding `.git` files.
 
     Args:
-        path: The path to the package directory.
+        path: The path to the directory.
 
     Returns:
-        A string representation of the file tree.
+        A string representation of the file tree with emojis.
     """
     # Check if the path is a directory and exists
     if not path.is_dir():

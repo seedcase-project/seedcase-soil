@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import seedir as sd
+from seedir import seedir
 
 
 def file_tree(path: Path) -> str:
@@ -16,6 +16,6 @@ def file_tree(path: Path) -> str:
     if not path.is_dir():
         raise ValueError(f"{path} is not a directory.")
 
-    return sd.seedir(  # type: ignore[no-any-return]
+    return seedir(  # type: ignore[no-any-return]
         path, style="emoji", exclude_folders=[".git"], first="folders", printout=False
     )

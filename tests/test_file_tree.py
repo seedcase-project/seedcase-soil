@@ -30,3 +30,10 @@ def test_file_tree_includes_files(package_dir):
         assert file in result
     for dir in ["data", "docs"]:
         assert dir in result
+
+
+def test_file_tree_errors_with_non_directory(tmp_path):
+    file_path = tmp_path / "README.md"
+    file_path.touch()
+    with pytest.raises(ValueError, match="is not a directory"):
+        file_tree(file_path)

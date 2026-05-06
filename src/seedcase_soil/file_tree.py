@@ -1,10 +1,9 @@
 from pathlib import Path
-from typing import Any
 
 import seedir as sd
 
 
-def file_tree(path: Path) -> Any:
+def file_tree(path: Path) -> str:
     """Show file tree excluding `.git` files.
 
     Args:

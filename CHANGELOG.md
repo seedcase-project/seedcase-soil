@@ -16,6 +16,12 @@ individual release will not have many changes within it. Below is a list
 of the releases we've made so far, along with what was changed within
 each release.
 
+## 0.14.0 (2026-05-06)
+
+### Feat
+
+- ✨ add `file_tree()` (#39)
+
 ## 0.13.0 (2026-05-04)
 
 ## 0.12.0 (2026-04-30)

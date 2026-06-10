@@ -136,7 +136,34 @@
             "title": "Country",
             "name": "country",
             "type": "string",
-            "description": "The country the location is in."
+            "description": "The country the location is in.",
+            "constraints": {
+              "enum": [
+                "Denmark",
+                "Brazil",
+                "Canada",
+                "Chile",
+                "China",
+                "Egypt",
+                "Ghana",
+                "India",
+                "Indonesia",
+                "Japan",
+                "Kenya",
+                "Mexico",
+                "Morocco",
+                "New Zealand",
+                "Nigeria",
+                "Peru",
+                "South Africa",
+                "South Korea",
+                "Sweden",
+                "Thailand",
+                "Turkey",
+                "United Kingdom",
+                "Vietnam"
+              ]
+            }
           },
           {
             "title": "Local Name",
@@ -211,7 +238,15 @@
             "title": "Growth Stage",
             "name": "growth_stage",
             "type": "string",
-            "description": "The observed growth stage of the species."
+            "description": "The observed growth stage of the species.",
+            "constraints": {
+              "enum": [
+                "seedling",
+                "vegetative",
+                "flowering",
+                "fruiting"
+              ]
+            }
           },
           {
             "title": "Location Region",
@@ -223,7 +258,34 @@
             "title": "Location Country",
             "name": "location_country",
             "type": "string",
-            "description": "The country of the location."
+            "description": "The country of the location.",
+            "constraints": {
+              "enum": [
+                "Denmark",
+                "Brazil",
+                "Canada",
+                "Chile",
+                "China",
+                "Egypt",
+                "Ghana",
+                "India",
+                "Indonesia",
+                "Japan",
+                "Kenya",
+                "Mexico",
+                "Morocco",
+                "New Zealand",
+                "Nigeria",
+                "Peru",
+                "South Africa",
+                "South Korea",
+                "Sweden",
+                "Thailand",
+                "Turkey",
+                "United Kingdom",
+                "Vietnam"
+              ]
+            }
           }
         ]
       }

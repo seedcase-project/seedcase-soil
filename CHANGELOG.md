@@ -16,6 +16,12 @@ individual release will not have many changes within it. Below is a list
 of the releases we've made so far, along with what was changed within
 each release.
 
+## 0.16.0 (2026-06-10)
+
+### Feat
+
+- ✨ add enum constraints to flora (#54)
+
 ## 0.15.0 (2026-06-04)
 
 ## 0.14.0 (2026-05-06)

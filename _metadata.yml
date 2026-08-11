@@ -1,6 +1,8 @@
 gh:
-  repo: seedcase-soil
-  org: seedcase-project
+  org: "seedcase-project"
+  repo: "seedcase-soil"
+
+tagline: "Common ground hared by Seedcase Python packages."
 
 titles:
   full: "Soil: Common ground shared by Seedcase Python packages"

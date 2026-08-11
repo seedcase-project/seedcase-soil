@@ -1,7 +1,7 @@
 [project]
 name = "seedcase-soil"
 version = "0.16.0"
-description = "Common ground shared by Seedcase Python packages"
+description = "Common ground shared by Seedcase Python packages."
 authors = [
   { name = "Luke W. Johnston", email = "lwjohnst@gmail.com" },
   { name = "Marton Vago", email = "marton.vago95@gmail.com" },
@@ -23,8 +23,30 @@ dependencies = [
     "seedir>=0.5.1",
 ]
 
+# From https://pypi.org/classifiers/
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+
+  # Strict typing, checked via Pyrefly
+  "Typing :: Typed",
+
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+]
+
 [project.urls]
 homepage = "https://soil.seedcase-project.org"
+
 repository = "https://github.com/seedcase-project/seedcase-soil"
 changelog = "https://github.com/seedcase-project/seedcase-soil/blob/main/CHANGELOG.md"
 issues = "https://github.com/seedcase-project/seedcase-soil/issues"
@@ -50,3 +72,23 @@ dev = [
   "typos>=1.44.0",
   "vulture>=2.16",
 ]
+[tool.pytest.ini_options]
+# - A short traceback (tb) mode to make it easier to view.
+# - Use the `src/` package (importlib).
+# - Use code coverage on the `src/` package.
+# - If tests fail, do not generate coverage report.
+# - Create the coverage report in XML (for badge), terminal, and HTML.
+# - Trigger failure if below 90% code coverage.
+addopts = "--tb=short --import-mode=importlib --cov=src --no-cov-on-fail --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=90"
+
+[tool.pyrefly]
+project-includes = ["src/", "tests/"]
+min-severity = "warn"
+python-version = "3.12.0"
+preset = "strict"
+python-interpreter-path = ".venv/bin/python"
+# Use inline `# type: ignore` comments, which can be useful.
+permissive-ignores = true
+
+[tool.ruff]
+extend = ".config/ruff.toml"

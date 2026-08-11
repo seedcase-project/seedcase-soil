@@ -1,2 +1,4 @@
-# All members on Developers team get added to review PRs
-* @seedcase-project/developers
+# Which team or person to inform for PRs that modify these files.
+# `*` means all files in the repository.
+# TODO: Add code owners.
+*

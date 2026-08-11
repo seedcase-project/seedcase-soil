@@ -1,7 +1,8 @@
 """Small functional helpers shared across Seedcase packages."""
 
+from collections.abc import Callable, Iterable
 from itertools import chain, repeat
-from typing import Callable, Iterable, TypeVar
+from typing import TypeVar
 
 In = TypeVar("In")
 Out = TypeVar("Out")

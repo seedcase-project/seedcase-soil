@@ -1,5 +1,5 @@
 title: "Soil: Common ground shared by Seedcase Python packages"
-abstract: "Sprout is an Python package with functionality that we use across Seedcase Python packages."
+abstract: "Soil is an Python package with functionality that we use across Seedcase Python packages."
 authors:
   - family-names: Brødbæk
     given-names: Signe Kirk
@@ -16,7 +16,7 @@ authors:
     orcid: "https://orcid.org/0009-0007-4628-655X"
 cff-version: 1.2.0
 doi: "10.5281/zenodo.15800477"
-date-released: "2026-06-10"
+date-released: "2026-04-17"
 license: MIT
 message: "If you use this Python package, please cite it using these metadata."
 repository-code: "https://github.com/seedcase-project/seedcase-soil"

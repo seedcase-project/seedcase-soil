@@ -1,6 +1,6 @@
 
 
-# seedcase-soil: Common ground hared by Seedcase Python packages.
+# seedcase-soil: Common ground shared by Seedcase Python packages.
 
 <!-- TODO: Include DOI after uploading -->
 
@@ -54,6 +54,15 @@ Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
 to abide by its terms.
 
+### Contributors
+
+The following people have contributed to this project by submitting pull
+requests :tada:
+
+[@joelostblom](https://github.com/joelostblom),
+[@lwjohnst86](https://github.com/lwjohnst86),
+[@signekb](https://github.com/signekb)
+
 ## Licensing
 
 This project is licensed under the [MIT License](LICENSE.md).
@@ -67,13 +76,14 @@ For a list of changes, see our [changelog](CHANGELOG.md) page.
 If you use this package in your work, please cite it as follows:
 
 Brødbæk S.K., Johnston L.W., Ostblom J., Vago M. (2026). Soil: Common
-ground shared by Seedcase Python packages URL:
-https://soil.seedcase-project.org
+ground shared by Seedcase Python packages DOI: 10.5281/zenodo.15800477
+URL: https://soil.seedcase-project.org
 
 Or as a BibTeX entry:
 
     @misc{YourReferenceHere,
     author = {Brødbæk, Signe Kirk and Johnston, Luke William and Ostblom, Joel and Vago, Marton},
+    doi = {10.5281/zenodo.15800477},
     month = {6},
     title = {Soil: Common ground shared by Seedcase Python packages},
     url = {https://soil.seedcase-project.org},

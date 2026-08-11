@@ -4,8 +4,8 @@
 
 The easiest way to contribute is to report issues or bugs that you might find
 while using `seedcase-soil`. You can do this by creating a
-[new](https://github.com/seedcase-project/seedcase-soil/issues/new/choose)
-issue on our GitHub repository.
+[new](https://github.com/seedcase-project/seedcase-soil/issues/new/choose) issue
+on our GitHub repository.
 
 ## :pencil2: Adding or modifying content
 
@@ -16,10 +16,10 @@ manage our package, such as to run checks and test the package. Both the uv and
 justfile websites have a more detailed guide on using uv, but below are some
 simple instructions to get you started.
 
-It's easiest to first
-[install uv](https://docs.astral.sh/uv/getting-started/installation/) and then
-install justfile and the other tools with uv. Once you've installed uv, install
-the other tools by running:
+It's easiest to first [install
+uv](https://docs.astral.sh/uv/getting-started/installation/) and then install
+justfile and the other tools with uv. Once you've installed uv, install the
+other tools by running:
 
 ```bash
 uv tool install rust-just pyrefly ruff
@@ -31,7 +31,7 @@ Code.
 We keep all our development workflows in the `justfile`, so you can explore it
 to see what commands are available. To see a list of commands available, run:
 
-``` bash
+```bash
 just
 ```
 
@@ -39,14 +39,14 @@ As you contribute, make sure your changes will pass our tests by opening a
 terminal so that the working directory is the root of this package's repository
 and running:
 
-``` bash
+```bash
 just run-all
 ```
 
-When committing changes, please try to follow
-[Conventional Commits](https://decisions.seedcase-project.org/why-conventional-commits/)
-as Git messages. Using this convention allows us to be able to automatically
-create a release based on the commit message by using
+When committing changes, please try to follow [Conventional
+Commits](https://decisions.seedcase-project.org/why-conventional-commits/) as
+Git messages. Using this convention allows us to be able to automatically create
+a release based on the commit message by using
 [Cocogitto](https://decisions.seedcase-project.org/why-semantic-release-with-cocogitto/).
 If you don't use Conventional Commits when making a commit, we will revise the
 pull request title to follow that format, as we use squash merges when merging

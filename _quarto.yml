@@ -8,7 +8,7 @@ website:
   page-navigation: true
   navbar:
     pinned: true
-    title: false
+    title: "Soil"
     logo: "_extensions/seedcase-project/seedcase-theme/logos/seedcase/icon.svg"
     logo-alt: "seedcase-soil logo: Main page"
     left:

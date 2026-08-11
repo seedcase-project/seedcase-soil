@@ -15,7 +15,7 @@ authors:
     given-names: Marton
     orcid: "https://orcid.org/0009-0007-4628-655X"
 cff-version: 1.2.0
-# doi:
+doi: "10.5281/zenodo.15800477"
 date-released: "2026-06-10"
 license: MIT
 message: "If you use this Python package, please cite it using these metadata."

@@ -1,6 +1,6 @@
 
 
-# Soil: Common ground shared by Seedcase Python packages
+# seedcase-soil: Common ground hared by Seedcase Python packages.
 
 <!-- TODO: Include DOI after uploading -->
 
@@ -34,64 +34,15 @@ within many of our Python packages. Rather than copy and paste code
 across these packages, we hoist them over into our “soil” to provide a
 foundation to “grow” those other packages.
 
+Check out our [website](https://soil.seedcase-project.org) for more
+information, such as the features it provides. For a list of changes,
+see our [changelog](CHANGELOG.md).
+
 > [!TIP]
 >
-> This Python package was generated from the
-> [`template-python-package`](https://github.com/seedcase-project/template-python-package)
+> This Python package was generated from the [Template Python
+> Package](https://github.com/seedcase-project/template-python-package)
 > Seedcase template :tada:
-
-## Project files and folders
-
-- `.github/`: Contains GitHub-specific files, such as issue and pull
-  request templates, workflows,
-  [dependabot](https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/dependabot-quickstart-guide)
-  configuration, pull request templates, and a
-  [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
-  file.
-- `tools/vulture-allowlist.py`: List of variables that shouldn’t be
-  flagged by [Vulture](https://github.com/jendrikseipp/vulture) as
-  unused.
-- `tools/get-contributors.sh`: Script to get list of project
-  contributors.
-- `tests/`: Test files for the package.
-- `src/`: Source code for the package.
-- `docs/`: Documentation about using and developing the Python package.
-- `_renderer.py`: Custom
-  [`quartodoc`](https://machow.github.io/quartodoc/) renderer.
-- `pytest.ini`: Pytest configuration file.
-- `mypy.ini`: [`mypy`](https://mypy.readthedocs.io/en/stable/)
-  configuration file for type checking Python code.
-- `.copier-answers.yml`: Contains the answers you gave when copying the
-  project from the template. **You should not modify this file
-  directly.**
-- `.cz.toml`:
-  [Commitizen](https://commitizen-tools.github.io/commitizen/)
-  configuration file for managing versions and changelogs.
-- `.pre-commit-config.yaml`: [Pre-commit](https://pre-commit.com/)
-  configuration file for managing and running checks before each commit.
-- `.typos.toml`: [typos](https://github.com/crate-ci/typos) spell
-  checker configuration file.
-- `justfile`: [`just`](https://just.systems/man/en/) configuration file
-  for scripting project tasks.
-- `.editorconfig`: Editor configuration file for
-  [EditorConfig](https://editorconfig.org/) to maintain consistent
-  coding styles across different editors and IDEs.
-- `CHANGELOG.md`: Changelog file for tracking changes in the project.
-- `CITATION.cff`: Structured citation metadata for your project.
-- `CONTRIBUTING.md`: Guidelines for contributing to the project.
-- `_metadata.yml`: Quarto metadata file for the website, including
-  information about the project, such as the titles and GitHub names.
-- `pyproject.toml`: Main Python project configuration file defining
-  metadata and dependencies.
-- `_quarto.yml`: Quarto configuration file for the website, including
-  settings for the website, such as the theme, navigation, and other
-  options.
-- `ruff.toml`: [Ruff](https://docs.astral.sh/ruff/) configuration file
-  for linting and formatting Python code.
-- `uv.lock`: Lockfile used by [`uv`](https://docs.astral.sh/uv/) to
-  record exact versions of installed dependencies.
-- `.rumdl.toml`: [rumdl](https://rumdl.dev/) configuration file for
-  formatting Markdown files so that they are standardized and consistent
 
 ## Contributing
 
@@ -110,3 +61,21 @@ This project is licensed under the [MIT License](LICENSE.md).
 ## Changelog
 
 For a list of changes, see our [changelog](CHANGELOG.md) page.
+
+## Citing
+
+If you use this package in your work, please cite it as follows:
+
+Brødbæk S.K., Johnston L.W., Ostblom J., Vago M. (2026). Soil: Common
+ground shared by Seedcase Python packages URL:
+https://soil.seedcase-project.org
+
+Or as a BibTeX entry:
+
+    @misc{YourReferenceHere,
+    author = {Brødbæk, Signe Kirk and Johnston, Luke William and Ostblom, Joel and Vago, Marton},
+    month = {6},
+    title = {Soil: Common ground shared by Seedcase Python packages},
+    url = {https://soil.seedcase-project.org},
+    year = {2026}
+    }

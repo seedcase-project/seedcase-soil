@@ -145,6 +145,6 @@ def run_without_tracebacks(app: App, args: Optional[list[str]] = None) -> None:
     """
     try:
         app(args)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _pretty_print_error(e)
         raise SystemExit(1)

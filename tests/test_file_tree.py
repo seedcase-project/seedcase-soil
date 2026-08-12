@@ -1,10 +1,12 @@
+from pathlib import Path
+
 import pytest
 
 from seedcase_soil.file_tree import file_tree
 
 
 @pytest.fixture
-def package_dir(tmp_path):
+def package_dir(tmp_path: Path):
     (tmp_path / "data").mkdir()
     (tmp_path / "data" / "raw.csv").touch()
     (tmp_path / "docs").mkdir()
@@ -16,15 +18,15 @@ def package_dir(tmp_path):
     return tmp_path
 
 
-def test_file_tree_returns_string(package_dir):
+def test_file_tree_returns_string(package_dir: Path):
     assert isinstance(file_tree(package_dir), str)
 
 
-def test_file_tree_excludes_git(package_dir):
+def test_file_tree_excludes_git(package_dir: Path):
     assert ".git" not in file_tree(package_dir)
 
 
-def test_file_tree_includes_files(package_dir):
+def test_file_tree_includes_files(package_dir: Path):
     result = file_tree(package_dir)
     for file in ["raw.csv", "index.md", "README.md", "datapackage.json"]:
         assert file in result
@@ -32,7 +34,7 @@ def test_file_tree_includes_files(package_dir):
         assert dir in result
 
 
-def test_file_tree_errors_with_non_directory(tmp_path):
+def test_file_tree_errors_with_non_directory(tmp_path: Path):
     file_path = tmp_path / "README.md"
     file_path.touch()
     with pytest.raises(ValueError, match="is not a directory"):

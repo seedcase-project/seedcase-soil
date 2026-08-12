@@ -30,14 +30,10 @@ def read_properties(address: Address) -> Properties:
         A dictionary with datapackage metadata.
 
     Raises:
-        FileDoesNotExistError:
-            If the file cannot be found.
-        JSONFormatError:
-            If the JSON files is malformatted.
-        HTTPStatusError:
-            If an HTTP error is encountered.
-        HTTPDomainError:
-            If the domain cannot be found.
+        FileDoesNotExistError: If the file cannot be found.
+        JSONFormatError: If the JSON files is malformatted.
+        HTTPStatusError: If an HTTP error is encountered.
+        HTTPDomainError: If the domain cannot be found.
 
     Examples:
         ```{python}
@@ -85,14 +81,13 @@ def write_properties(properties: Properties, path: Path) -> Path:
         properties: The Data Package Properties to write.
         path: The file path to write the properties to.
 
-    Return:
+    Returns:
         The path for the file that was just written.
 
     Raises:
-        FileNotFoundError:
-            If the parent directory of the target file does not exist.
-        TypeError:
-            If `properties` is not JSON serializable.
+        FileNotFoundError: If the parent directory of the target file does not
+            exist.
+        TypeError: If `properties` is not JSON serializable.
     """
     text = json.dumps(properties, indent=2, ensure_ascii=False)
     path.write_text(text)

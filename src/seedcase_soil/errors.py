@@ -27,7 +27,7 @@ class JSONFormatError(SoilError):
     """Error when a file has invalid JSON format."""
 
     def __init__(self, resolved_address: str, json_error: str) -> None:
-        """Initialize JSONFormatError with resolved_address and JSON error details."""
+        """Initialize with resolved_address and JSON error details."""
         super().__init__(
             resolved_address,
             f"A JSON formatting issue was found: {json_error}",
@@ -38,7 +38,7 @@ class HTTPStatusError(SoilError):
     """Error when an HTTP request returns an error status code."""
 
     def __init__(self, resolved_address: str, code: int, reason: str) -> None:
-        """Initialize HTTPStatusError with resolved_address, status code, and reason."""
+        """Initialize with resolved_address, status code, and reason."""
         super().__init__(resolved_address, f"Error code {code}: {reason}")
 
 
@@ -57,7 +57,7 @@ class NotJSONError(SoilError):
     """Error when a URL does not return JSON content."""
 
     def __init__(self, resolved_address: str, content_type: str) -> None:
-        """Initialize NotJSONError with resolved_address and actual content type."""
+        """Initialize with resolved_address and actual content type."""
         super().__init__(
             resolved_address,
             f"Expected JSON but received '{content_type}'.",

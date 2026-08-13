@@ -7,8 +7,8 @@ from itertools import chain, repeat
 def fmap[In, Out](items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
     """Apply `fn` to each element in `items`.
 
-    The difference to the build-in `map()` is the order of the arguments
-    and that the output is always a list.
+    The difference to the build-in `map()` is the order of the arguments and
+    that the output is always a list.
 
     Args:
         items: The sequence of items, such as a list, array, or dict.
@@ -16,7 +16,6 @@ def fmap[In, Out](items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
 
     Returns:
         A list with the output values after the function is applied.
-
     """
     return list(map(fn, items))
 
@@ -58,16 +57,16 @@ def pairwise_fmap[In, Other, Result](
 ) -> list[Result]:
     """Apply `fn` to each pair of elements in `items1` and `items2`.
 
-    If `items2` has only one element, that element is repeated
-    to match the length of `items1`. Otherwise, both `item1` and
-    `item2` must be the same length. The `fn` places `item1` in
-    the first position and `item2` in the second position, e.g.
-    `fn(item1, item2)`.
+    If `items2` has only one element, that element is repeated to match the
+    length of `items1`. Otherwise, both `item1` and `item2` must be the same
+    length. The `fn` places `item1` in the first position and `item2` in the
+    second position, e.g. `fn(item1, item2)`.
 
     Args:
         items1: The sequence of items, such as a list, array, or dict.
         items2: The sequence of items, such as a list, array, or dict.
-        fn: The function to apply to each pair of elements from `items1` and `items2`.
+        fn: The function to apply to each pair of elements from `items1` and
+            `items2`.
 
     Returns:
         A list with the output values after applying the function.

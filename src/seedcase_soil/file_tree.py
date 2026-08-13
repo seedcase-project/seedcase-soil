@@ -4,7 +4,9 @@ from seedir import seedir
 
 
 def file_tree(path: Path) -> str:
-    """Return the directory file tree with emojis as a string, excluding `.git` files.
+    """Return the directory file tree.
+
+    With emojis as a string and excluding `.git` files.
 
     Args:
         path: The path to the directory.

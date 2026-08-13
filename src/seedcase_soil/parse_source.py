@@ -24,8 +24,8 @@ def parse_source(source: str) -> Address:
         A formal `Address` class.
 
     Raises:
-        ValueError: If the `source` contains something other than what
-            Seedcase can accept.
+        ValueError: If the `source` contains something other than what Seedcase
+            can accept.
 
     Examples:
         ```{python}

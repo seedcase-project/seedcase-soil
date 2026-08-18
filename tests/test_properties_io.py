@@ -7,6 +7,7 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 
 import pytest
+from pytest_mock import MockerFixture
 
 from seedcase_soil.errors import (
     FileDoesNotExistError,
@@ -17,12 +18,14 @@ from seedcase_soil.errors import (
 )
 from seedcase_soil.example_datapackage import Example
 from seedcase_soil.parse_source import Address, parse_source
-from seedcase_soil.properties_io import read_properties, write_properties
+from seedcase_soil.properties_io import Properties, read_properties, write_properties
 
 # read_properties: local file ====
 
 
-def test_read_properties_local_filepath(datapackage_path, datapackage):
+def test_read_properties_local_filepath(
+    datapackage_path: Path, datapackage: dict[str, Any]
+):
     """Reading a local datapackage.json file should return its contents."""
     address = Address(value=str(datapackage_path), local=True)
     result = read_properties(address)
@@ -30,7 +33,7 @@ def test_read_properties_local_filepath(datapackage_path, datapackage):
     assert result == datapackage
 
 
-def test_read_properties_local_dirpath(datapackage_path, datapackage):
+def test_read_properties_local_dirpath(datapackage_path: Path, datapackage: Properties):
     """Passing a path to a directory containing a datapackage.json should work."""
     address = parse_source(str(Path(datapackage_path).parent))
     result = read_properties(address)
@@ -46,7 +49,7 @@ def test_read_properties_raises_on_file_not_found():
         read_properties(address)
 
 
-def test_read_properties_raises_on_malformed_json(tmp_path):
+def test_read_properties_raises_on_malformed_json(tmp_path: Path):
     """A file with malformed JSON should raise JSONFormatError."""
     json_file = tmp_path / "datapackage.json"
     json_file.write_text("{ invalid json }")
@@ -70,7 +73,7 @@ def test_read_properties_reads_all_builtin_examples(example: Example) -> None:
 
 
 @pytest.mark.usefixtures("mocker")
-def test_read_properties_remote_url(mocker, datapackage):
+def test_read_properties_remote_url(mocker: MockerFixture, datapackage: Properties):
     """Reading a remote datapackage.json URL should return its contents."""
     mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
@@ -84,7 +87,7 @@ def test_read_properties_remote_url(mocker, datapackage):
 
 
 @pytest.mark.usefixtures("mocker")
-def test_read_properties_raises_on_remote_invalid_json(mocker):
+def test_read_properties_raises_on_remote_invalid_json(mocker: MockerFixture):
     """Remote URL returning malformed JSON should raise JSONFormatError."""
     mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value
@@ -97,7 +100,7 @@ def test_read_properties_raises_on_remote_invalid_json(mocker):
 
 
 @pytest.mark.usefixtures("mocker")
-def test_read_properties_raises_on_remote_404(mocker):
+def test_read_properties_raises_on_remote_404(mocker: MockerFixture):
     """A remote URL returning 404 should raise HTTPStatusError."""
     mocker.patch(
         "seedcase_soil.properties_io.request.urlopen",
@@ -113,7 +116,7 @@ def test_read_properties_raises_on_remote_404(mocker):
 
 
 @pytest.mark.usefixtures("mocker")
-def test_read_properties_raises_on_remote_dns_failure(mocker):
+def test_read_properties_raises_on_remote_dns_failure(mocker: MockerFixture):
     """Remote URL with a non-existent domain should raise HTTPDomainError."""
     mocker.patch(
         "seedcase_soil.properties_io.request.urlopen",
@@ -129,7 +132,7 @@ def test_read_properties_raises_on_remote_dns_failure(mocker):
 
 
 @pytest.mark.usefixtures("mocker")
-def test_read_properties_raises_on_non_json_content_type(mocker):
+def test_read_properties_raises_on_non_json_content_type(mocker: MockerFixture):
     """Remote URL returning non-JSON content type should raise NotJSONError."""
     mock_urlopen = mocker.patch("seedcase_soil.properties_io.request.urlopen")
     mock_response = mock_urlopen.return_value.__enter__.return_value

@@ -2,15 +2,9 @@
 
 from collections.abc import Callable, Iterable
 from itertools import chain, repeat
-from typing import TypeVar
-
-In = TypeVar("In")
-Out = TypeVar("Out")
-Other = TypeVar("Other")
-Result = TypeVar("Result")
 
 
-def fmap(items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
+def fmap[In, Out](items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
     """Apply `fn` to each element in `items`.
 
     The difference to the build-in `map()` is the order of the arguments and
@@ -26,7 +20,7 @@ def fmap(items: Iterable[In], fn: Callable[[In], Out]) -> list[Out]:
     return list(map(fn, items))
 
 
-def keep(items: Iterable[In], fn: Callable[[In], bool]) -> list[In]:
+def keep[In](items: Iterable[In], fn: Callable[[In], bool]) -> list[In]:
     """Keep elements in `items` where `fn` returns `True`.
 
     The difference to the built-in `filter()` is the order of the arguments,
@@ -43,7 +37,9 @@ def keep(items: Iterable[In], fn: Callable[[In], bool]) -> list[In]:
     return list(filter(fn, items))
 
 
-def flat_fmap(items: Iterable[In], fn: Callable[[In], Iterable[Out]]) -> list[Out]:
+def flat_fmap[In, Out](
+    items: Iterable[In], fn: Callable[[In], Iterable[Out]]
+) -> list[Out]:
     """Apply `fn` to each element in `items` and flatten one level.
 
     Args:
@@ -56,7 +52,7 @@ def flat_fmap(items: Iterable[In], fn: Callable[[In], Iterable[Out]]) -> list[Ou
     return list(chain.from_iterable(map(fn, items)))
 
 
-def pairwise_fmap(
+def pairwise_fmap[In, Other, Result](
     items1: list[In], items2: list[Other], fn: Callable[[In, Other], Result]
 ) -> list[Result]:
     """Apply `fn` to each pair of elements in `items1` and `items2`.

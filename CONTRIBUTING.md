@@ -9,6 +9,11 @@ on our GitHub repository.
 
 ## :pencil2: Adding or modifying content
 
+If you would like to contribute content, please check out our
+[guidebook](https://guidebook.seedcase-project.org/) for more specific details
+on how we work and develop. It is a regularly evolving document, so is at
+various states of completion.
+
 To contribute to `seedcase-soil`, you first need to install
 [uv](https://docs.astral.sh/uv/) and
 [justfile](https://just.systems/man/en/packages.html). We use uv and justfile to

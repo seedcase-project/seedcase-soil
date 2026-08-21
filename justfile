@@ -19,11 +19,15 @@ build-all: build-contributors build-website build-readme
 # List all TODO items in the repository
 list-todos:
   grep -R -n \
-    --exclude="*.code-snippets" \
-    --exclude-dir=.quarto \
-    --exclude=justfile \
-    --exclude=_site \
-    "TODO" *
+  --exclude-dir=.quarto \
+  --exclude-dir=template \
+  --exclude-dir=.git \
+  --exclude-dir=*_cache \
+  --exclude-dir=_temp \
+  --exclude-dir=_site \
+  --exclude=justfile \
+  --exclude=copier.yaml \
+  "TODO" .
 
 # Install the pre-commit hooks
 install-precommit:

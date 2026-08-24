@@ -131,7 +131,6 @@ jobs:
   #
   # Source repository: https://github.com/actions/dependency-review-action
   check-dependencies:
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Harden the runner (Audit all outbound calls)

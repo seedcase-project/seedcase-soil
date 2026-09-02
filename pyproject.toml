@@ -17,7 +17,7 @@ license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.12"
 dependencies = [
-    "cyclopts>=4.22.5",
+    "cyclopts>=4.23.3",
     "emoji>=2.15.0",
     "rich>=14.3.3",
     "seedir>=0.5.1",

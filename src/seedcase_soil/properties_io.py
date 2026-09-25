@@ -77,6 +77,8 @@ def read_properties(address: Address) -> Properties:
 def write_properties(properties: Properties, path: Path) -> Path:
     """Write properties to a local datapackage file and return the path.
 
+    A trailing newline is added to match pre-commit's end-of-file-fixer.
+
     Args:
         properties: The Data Package Properties to write.
         path: The file path to write the properties to.
@@ -90,5 +92,5 @@ def write_properties(properties: Properties, path: Path) -> Path:
         TypeError: If `properties` is not JSON serializable.
     """
     text = json.dumps(properties, indent=2, ensure_ascii=False)
-    path.write_text(text)
+    path.write_text(text + "\n")
     return path

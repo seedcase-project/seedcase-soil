@@ -156,6 +156,7 @@ def test_write_properties_local_path(
     write_properties(datapackage, output_path)
 
     assert output_path.exists()
+    assert output_path.read_text().endswith("}\n")
 
 
 def test_write_properties_raises_on_missing_parent(

@@ -59,6 +59,7 @@ to abide by its terms.
 The following people have contributed to this project by submitting pull
 requests :tada:
 
+[@fruvago](https://github.com/fruvago),
 [@joelostblom](https://github.com/joelostblom),
 [@lwjohnst86](https://github.com/lwjohnst86),
 [@signekb](https://github.com/signekb)
@@ -75,16 +76,16 @@ For a list of changes, see our [changelog](CHANGELOG.md) page.
 
 If you use this package in your work, please cite it as follows:
 
-Brødbæk S.K., Johnston L.W., Ostblom J., Vago M. (2026). Soil: Common
+Brødbæk S.K., Johnston L.W., Ostblom J., Vago F. (2026). Soil: Common
 ground shared by Seedcase Python packages DOI: 10.5281/zenodo.15800477
 URL: https://soil.seedcase-project.org
 
 Or as a BibTeX entry:
 
     @misc{YourReferenceHere,
-    author = {Brødbæk, Signe Kirk and Johnston, Luke William and Ostblom, Joel and Vago, Marton},
+    author = {Brødbæk, Signe Kirk and Johnston, Luke William and Ostblom, Joel and Vago, Fruzsina},
     doi = {10.5281/zenodo.15800477},
-    month = {6},
+    month = {4},
     title = {Soil: Common ground shared by Seedcase Python packages},
     url = {https://soil.seedcase-project.org},
     year = {2026}

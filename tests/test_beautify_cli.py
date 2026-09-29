@@ -60,28 +60,28 @@ def test_format_param_help_puts_flags_first():
     assert result == "[bold blue]--source[/bold blue] [bold blue]-s[/bold blue]"
 
 
-def test_pretty_print(capsys):
+def test_pretty_print(capsys: pytest.CaptureFixture[str]):
     """pretty_print should print the message."""
 
     pretty_print("test message")
     assert "test message" in capsys.readouterr().out
 
 
-def test_print_if_verbose_when_verbose(capsys):
+def test_print_if_verbose_when_verbose(capsys: pytest.CaptureFixture[str]):
     """print_if_verbose should print when verbose is True."""
 
     print_if_verbose(True, "verbose message")
     assert "verbose message" in capsys.readouterr().out
 
 
-def test_print_if_verbose_when_not_verbose(capsys):
+def test_print_if_verbose_when_not_verbose(capsys: pytest.CaptureFixture[str]):
     """print_if_verbose should not print when verbose is False."""
 
     print_if_verbose(False, "verbose message")
     assert capsys.readouterr().out == ""
 
 
-def test_run_without_tracebacks_on_error(capsys):
+def test_run_without_tracebacks_on_error(capsys: pytest.CaptureFixture[str]):
     """run_without_tracebacks should print error panel and exit on exception."""
     import sys
 
@@ -142,7 +142,7 @@ def build(
         verbose: If True, print more details.
         output_dir: The output directory.
     """
-    source, verbose, output_dir  # Avoid unused variables
+    _ = source, verbose, output_dir  # Avoid unused variables
 
 
 _EXPECTED_HELP = dedent(
@@ -189,14 +189,14 @@ def console():
     )
 
 
-def test_main_help_page(capsys, console):
+def test_main_help_page(capsys: pytest.CaptureFixture[str], console: Console):
     """The main help page should have the correct format."""
     with pytest.raises(SystemExit):
         app(["--help"], console=console)
     assert capsys.readouterr().out == _EXPECTED_HELP
 
 
-def test_command_help_page(capsys, console):
+def test_command_help_page(capsys: pytest.CaptureFixture[str], console: Console):
     """Command help should have the correct format."""
     with pytest.raises(SystemExit):
         app(["build", "--help"], console=console)
@@ -206,7 +206,7 @@ def test_command_help_page(capsys, console):
 # It was not possible to include these color markup tags directly in the help string
 # test above because printing them out explicitly in the rich console messes up the
 # column widths in cyclopts
-def test_help_applies_rich_markup(capsys):
+def test_help_applies_rich_markup(capsys: pytest.CaptureFixture[str]):
     """Help output should contain the markup tags (not rendered)."""
     markup_console = Console(
         width=90,

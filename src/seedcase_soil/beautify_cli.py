@@ -139,12 +139,11 @@ def run_without_tracebacks(app: App, args: Optional[list[str]] = None) -> None:
     Args:
         app: The Cyclopts app instance to run as the CLI.
         args: Any arguments to pass to the app upon launch. This is mostly for
-            testing purposes so that we can emulate running `app --cmd`
-            inside `run_without_tracebacks()`.
-
+            testing purposes so that we can emulate running `app --cmd` inside
+            `run_without_tracebacks()`.
     """
     try:
         app(args)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _pretty_print_error(e)
         raise SystemExit(1)

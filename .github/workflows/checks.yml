@@ -1,0 +1,145 @@
+name: Checks
+
+on: pull_request
+
+# Limit token permissions for security
+permissions: read-all
+
+jobs:
+  check-python:
+    # Permissions needed for pushing to the coverage branch.
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Install justfile
+        run: sudo apt-get install -y just
+
+      - name: Install Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install the project and it's dependencies
+        run: just install-deps
+
+      - name: Check Python style
+        run: just check-python
+
+      - name: Run tests and coverage
+        run: just test-python
+
+      - name: Prepare repo for coverage report
+        run: |
+          # So that folder can be committed
+          rm htmlcov/.gitignore
+
+      - name: Push coverage report and badge to branch
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
+        with:
+          branch: coverage
+          folder: htmlcov
+          # Keep a simple Git history
+          single-commit: true
+
+      - name: Run security checks
+        run: just check-security
+
+      - name: Run unused code checker
+        run: just check-unused
+
+  check-typos:
+    runs-on: ubuntu-latest
+    steps:
+      # This is a useful security step to check for unexpected outbound calls from the runner,
+      # which could indicate a compromised token or runner.
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Spell check repo
+        uses: crate-ci/typos@4d9c206a77c041268485162b8e2579ad7a5cb9a3 # v1.50.0
+        with:
+          config: .config/typos.toml
+
+  check-website-build:
+    runs-on: ubuntu-latest
+    env:
+      QUARTO_PYTHON: ".venv/bin/python3"
+    steps:
+      # This is a useful security step to check for unexpected outbound calls from the runner,
+      # which could indicate a compromised token or runner.
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
+        with:
+          egress-policy: audit
+
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          # To have a faster CI time, enable cache between runs.
+          enable-cache: true
+          # Reset the cache if the lock file changes.
+          cache-dependency-glob: "uv.lock"
+
+      - name: "Set up Python"
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install the project and it's dependencies
+        run: |
+          uv sync --all-extras --dev
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2.2.0
+
+      - name: Build function reference docs
+        run: uv run quartodoc build
+
+      # Check that the website builds, but don't publish it
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@8a96df13519ee81fd526f2dfca5962811136661b # v2.2.0
+
+  # Dependency Review Action
+  #
+  # This Action will scan dependency manifest files that change as part of a Pull Request,
+  # surfacing known-vulnerable versions of the packages declared or updated in the PR.
+  # Once installed, if the workflow run is marked as required,
+  # PRs introducing known-vulnerable packages will be blocked from merging.
+  #
+  # Source repository: https://github.com/actions/dependency-review-action
+  check-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
+        with:
+          egress-policy: audit
+
+      - name: "Checkout Repository"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: "Dependency Review"
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0

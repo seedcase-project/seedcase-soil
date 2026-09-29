@@ -1,4 +1,5 @@
 """Custom quartodoc renderer that fixes the output of returns and raises sections."""
+# ruff: noqa
 
 from __future__ import annotations
 

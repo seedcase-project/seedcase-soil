@@ -1,7 +1,7 @@
 [project]
 name = "seedcase-soil"
-version = "0.16.0"
-description = "Common ground shared by Seedcase Python packages"
+version = "0.16.1"
+description = "Common ground shared by Seedcase Python packages."
 authors = [
   { name = "Signe Kirk Brødbæk", email = "signekb@clin.au.dk" },
   { name = "Luke W. Johnston", email = "lwjohnst@gmail.com" },
@@ -19,10 +19,31 @@ license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.12"
 dependencies = [
-  "cyclopts>=4.10.1",
+  "cyclopts>=4.23.3",
   "emoji>=2.15.0",
   "rich>=14.3.3",
   "seedir>=0.5.1",
+]
+
+# From https://pypi.org/classifiers/
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+
+  # Strict typing, checked via Pyrefly
+  "Typing :: Typed",
+
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
@@ -38,17 +59,37 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
   "bandit>=1.9.4",
-  "commitizen>=4.13.9",
+  "commitizen>=4.18.0",
   "genbadge>=1.1.3",
   "jupyter>=1.1.1",
   "mypy>=1.20.0",
-  "pre-commit>=4.5.1",
+  "pre-commit>=4.6.2",
   "pytest>=9.0.2",
   "pytest-mock>=3.15.1",
   "pytest-cov>=7.1.0",
   "quartodoc>=0.11.1",
-  "ruff>=0.15.8",
+  "ruff>=0.16.5",
   "types-tabulate>=0.10.0.20260308",
-  "typos>=1.44.0",
+  "typos>=1.50.0",
   "vulture>=2.16",
 ]
+[tool.pytest.ini_options]
+# - A short traceback (tb) mode to make it easier to view.
+# - Use the `src/` package (importlib).
+# - Use code coverage on the `src/` package.
+# - If tests fail, do not generate coverage report.
+# - Create the coverage report in XML (for badge), terminal, and HTML.
+# - Trigger failure if below 90% code coverage.
+addopts = "--tb=short --import-mode=importlib --cov=src --no-cov-on-fail --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=90"
+
+[tool.pyrefly]
+project-includes = ["src/", "tests/"]
+min-severity = "warn"
+python-version = "3.12.0"
+preset = "strict"
+python-interpreter-path = ".venv/bin/python"
+# Use inline `# type: ignore` comments, which can be useful.
+permissive-ignores = true
+
+[tool.ruff]
+extend = ".config/ruff.toml"
